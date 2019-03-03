@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Miles Loveday</title>
+    <link rel="icon" href="/favicon.ico">
     <style type="text/css">
-        @import url('https://rsms.me/inter/inter.css');
+        @font-face {
+            font-family: 'Inter';
+            font-style:  normal;
+            font-weight: 400;
+            src: url("https://rsms.me/inter/font-files/Inter-Light.woff2?v=3.3") format("woff2"),
+            url("https://rsms.me/inter/font-files/Inter-Light.woff?v=3.3") format("woff");
+        }
         * {
             box-sizing: border-box;
             margin: 0;
@@ -15,9 +22,6 @@
         html {
             font-size: 10px;
             font-family: 'Inter', sans-serif;
-        }
-        @supports (font-variation-settings: normal) {
-            html { font-family: 'Inter var', sans-serif; }
         }
         h1 {
             font-size: 2rem;

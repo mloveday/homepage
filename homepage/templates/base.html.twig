@@ -5,10 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>{% block title %}MilesLoveday.com{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
         <link rel="icon" href="{{ asset('/assets/favicon.ico') }}">
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    <div class="site-wrapper content">
+        <div class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="{{ path("index") }}">Home</a></li>
+                <li class="nav-item"><a href="{{ path("cv") }}">CV</a></li>
+            </ul>
+        </div>
+        <div class="content">{% block body %}{% endblock %}</div>
+    </div>
+    {% block javascripts %}{% endblock %}
     </body>
 </html>

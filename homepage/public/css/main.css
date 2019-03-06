@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Inter';
+    font-style:  normal;
+    font-weight: 400;
+    src: url("https://rsms.me/inter/font-files/Inter-Light.woff2?v=3.3") format("woff2"),
+    url("https://rsms.me/inter/font-files/Inter-Light.woff?v=3.3") format("woff");
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.6rem;
+}
+html {
+    font-size: 10px;
+    font-family: 'Inter', sans-serif;
+}
+h1 {
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1.8rem;
+}
+
+
+.nav, .content {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    top: 0;
+    transition: left 200ms ease;
+}
+
+.content {
+    z-index: 0;
+}
+
+.nav {
+    z-index: 1;
+}
+
+.site-wrapper.content .nav {
+    left: -100vw;
+}
+
+.site-wrapper.content .content {
+    left: 0;
+}
+
+.site-wrapper.nav .nav {
+    left: 0;
+}
+
+.nav-list {
+    height: 100%;
+    width: 320px;
+    background: white;
+    box-shadow: 10px 0 10px rgba(0,0,0,0.2);
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: 40px;
+}
+
+.nav-item {
+    display: grid;
+    align-items: center;
+    justify-content: start;
+    padding: 8px;
+}

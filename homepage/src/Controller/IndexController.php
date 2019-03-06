@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\CV\CV;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -13,6 +14,9 @@ class IndexController extends AbstractController {
     }
     /** @Route("/cv") */
     public function cv() {
-        return $this->render('index/cv.html.twig', []);
+        $cv = CV::myCv();
+        return $this->render('index/cv.html.twig', [
+            'cv' => $cv,
+        ]);
     }
 }

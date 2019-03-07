@@ -9,15 +9,21 @@
         <link rel="icon" href="{{ asset('/assets/favicon.ico') }}">
     </head>
     <body>
-    <div class="site-wrapper content">
-        <div class="nav">
-            <div id="app">${message}</div>
-            <ul class="nav-list">
-                <li class="nav-item"><a href="{{ path("index") }}">Home</a></li>
-                <li class="nav-item"><a href="{{ path("cv") }}">CV</a></li>
-            </ul>
+    <div id="app">
+        <div class="header">
+            <button class="nav-show-hide" v-on:click="toggleNav">Nav</button>
         </div>
-        <div class="content">{% block body %}{% endblock %}</div>
+        <div :class="showingNav ? 'site-wrapper show-nav' : 'site-wrapper show-content'">
+            <div class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="{{ path("index") }}">Home</a></li>
+                    <li class="nav-item"><a href="{{ path("cv") }}">CV</a></li>
+                </ul>
+            </div>
+            <div class="content">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
     </div>
     {% block javascripts %}{% endblock %}
     {{ encore_entry_script_tags('app') }}

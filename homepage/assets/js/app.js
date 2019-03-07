@@ -3,7 +3,10 @@ import Vue from 'vue';
 var app = new Vue({
     el: '#app',
     data: {
-        message: 'Hello Vue!'
+        showingNav: false
+    },
+    methods: {
+        toggleNav: function() { this.showingNav = !this.showingNav; }
     },
     delimiters: ['${', '}']
 });

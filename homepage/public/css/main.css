@@ -16,6 +16,9 @@ html {
     font-size: 10px;
     font-family: 'Inter', sans-serif;
 }
+body {
+    overflow: hidden;
+}
 h1 {
     font-size: 2rem;
 }
@@ -23,11 +26,26 @@ h2 {
     font-size: 1.8rem;
 }
 
+#app {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.header {
+    height: 32px;
+    border-bottom: 1px solid #ddd;
+}
+
+.site-wrapper {
+    height: calc(100vh - 40px);
+    position: relative;
+}
 
 .nav, .content {
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     overflow: auto;
     top: 0;
     transition: left 200ms ease;
@@ -41,15 +59,15 @@ h2 {
     z-index: 1;
 }
 
-.site-wrapper.content .nav {
+.site-wrapper.show-content .nav {
     left: -100vw;
 }
 
-.site-wrapper.content .content {
+.site-wrapper.show-content .content {
     left: 0;
 }
 
-.site-wrapper.nav .nav {
+.site-wrapper.show-nav .nav {
     left: 0;
 }
 
@@ -68,4 +86,9 @@ h2 {
     align-items: center;
     justify-content: start;
     padding: 8px;
+}
+
+.nav-show-hide {
+    padding: 0 8px;
+    height: 100%;
 }

@@ -38,7 +38,7 @@ h2 {
 }
 
 .site-wrapper {
-    height: calc(100vh - 40px);
+    height: calc(100vh - 32px);
     position: relative;
 }
 

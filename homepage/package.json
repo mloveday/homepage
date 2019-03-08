@@ -12,10 +12,13 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "css-loader": "^2.1.1",
         "node-sass": "^4.11.0",
         "sass-loader": "^7.1.0",
+        "turbolinks": "^5.2.0",
         "vue": "^2.6.8",
         "vue-loader": "^15.7.0",
-        "vue-template-compiler": "^2.6.8"
+        "vue-template-compiler": "^2.6.8",
+        "vue-turbolinks": "^2.0.4"
     }
 }

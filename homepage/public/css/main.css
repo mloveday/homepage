@@ -95,7 +95,17 @@ h2 {
     background-color: #ddd;
 }
 
+.header {
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
 .nav-show-hide {
+    position: absolute;
+    left: 0;
+    top: 0;
     padding: 0 8px;
     height: 100%;
 }

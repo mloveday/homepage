@@ -7,8 +7,7 @@
 {% block body %}
     <div class="page-wrapper">
         <div class="section details">
-            <h1 class="name">{{ cv.name }}</h1>
-            <div class="email">{{ cv.email }}</div>
+            <a href="mailto:{{ cv.email }}" class="email">{{ cv.email }}</a>
         </div>
         <div class="section personal-statement">
             <h2>Personal Statement</h2>

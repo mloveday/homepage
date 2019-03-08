@@ -75,6 +75,6 @@ class CV {
             new Interest('Photography','Avid photographer, particularly of people, happiest lugging around far more equipment than necessary for a good shot.'),
         ];
 
-        return new CV('Miles Loveday','admin@milesloveday.com','I am a full stack web developer (tending towards front end development and improving legacy code) with experience of greenfield and legacy projects in Java, PHP and JS/TS (React, Knockout), having worked for clients including the BBC and David Lloyd Leisure. Prior to becoming a developer I had a background in teaching secondary mathematics at top UK schools and studied Information Engineering at the University of Cambridge. I am currently a full time stay at home parent, with a specialty in long distance running.',$employers, $skills, $educators, $interests);
+        return new CV('Miles Loveday','contactme@milesloveday.com','I am a full stack web developer (tending towards front end development and improving legacy code) with experience of greenfield and legacy projects in Java, PHP and JS/TS (React, Knockout), having worked for clients including the BBC and David Lloyd Leisure. Prior to becoming a developer I had a background in teaching secondary mathematics at top UK schools and studied Information Engineering at the University of Cambridge. I am currently a full time stay at home parent, with a specialty in long distance running.',$employers, $skills, $educators, $interests);
     }
 }

@@ -11,11 +11,11 @@
     <body>
     <div id="app">
         <div class="header">
-            <button type="button" class="nav-show-hide" v-on:click="toggleNav"><i class="fas fa-bars"></i></button>
+            <button type="button" class="no-print nav-show-hide" v-on:click="toggleNav"><i class="fas fa-bars"></i></button>
             <h1>Miles Loveday</h1>
         </div>
         <div :class="showingNav ? 'site-wrapper show-nav' : 'site-wrapper show-content'">
-            <ul class="nav">
+            <ul class="nav no-print">
                 <li class="nav-item"><a class="nav-anchor" href="{{ path("index") }}">Home</a></li>
                 <li class="nav-item"><a class="nav-anchor" href="{{ path("cv") }}">CV</a></li>
             </ul>

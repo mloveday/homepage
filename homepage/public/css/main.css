@@ -11,6 +11,7 @@
     padding: 0;
     border: none;
     font-size: 1.6rem;
+    background: transparent;
 }
 html {
     font-size: 10px;
@@ -48,19 +49,27 @@ h2 {
     height: 100%;
     overflow: auto;
     top: 0;
-    transition: left 200ms ease;
+    transition: left 200ms linear;
 }
 
 .content {
     z-index: 0;
+    padding: 8px;
 }
 
 .nav {
     z-index: 1;
+    height: 100%;
+    width: 320px;
+    background: white;
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: 40px;
+    border-right: 1px solid #ddd;
 }
 
 .site-wrapper.show-content .nav {
-    left: -100vw;
+    left: -320px;
 }
 
 .site-wrapper.show-content .content {
@@ -71,24 +80,26 @@ h2 {
     left: 0;
 }
 
-.nav-list {
+.nav-item .nav-anchor {
     height: 100%;
-    width: 320px;
-    background: white;
-    box-shadow: 10px 0 10px rgba(0,0,0,0.2);
-    display: grid;
-    grid-auto-flow: row;
-    grid-auto-rows: 40px;
-}
-
-.nav-item {
+    width: 100%;
     display: grid;
     align-items: center;
     justify-content: start;
-    padding: 8px;
+    padding: 0 8px;
+    cursor: pointer;
+}
+
+
+.nav-item .nav-anchor:focus, .nav-item .nav-anchor:hover {
+    background-color: #ddd;
 }
 
 .nav-show-hide {
     padding: 0 8px;
     height: 100%;
+}
+
+.nav-show-hide:hover, .nav-show-hide:focus {
+    background-color: #ddd;
 }

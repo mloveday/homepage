@@ -1,0 +1,9 @@
+.list-of-links {
+    list-style-type: initial;
+    padding-left: 20px;
+}
+
+.index-content {
+    display: grid;
+    grid-gap: 8px;
+}

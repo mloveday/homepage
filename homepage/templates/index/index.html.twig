@@ -1,7 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
-    <h1>Hello World!</h1>
-    <img src="https://web.archive.org/web/20090829023556im_/http://geocities.com/okitsugu/underconstruction.gif" alt="Under construction"/>
-    <div>Best viewed in a browser</div>
+    <div class="index-content">
+        <h2>Hello World!</h2>
+        <div>Totally over-engineered personal webpage for hosting <a href="{{ path("cv") }}">a CV</a> and eventually various odds & sods like hobby projects, photos, etc. For those interested, back end is in Symfony 4, front end with some very basic Vue and a sprinkling of Turbolinks because why not?</div>
+        <div>In a very Geocities kinda way, have some links to stuff:</div>
+        <ul class="list-of-links">
+            <li><a href="https://github.com/mloveday">My github profile</a></li>
+        </ul>
+        <div class="footer no-print">Best viewed in a browser</div>
+    </div>
 {% endblock %}

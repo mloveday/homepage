@@ -108,6 +108,7 @@
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/zendframework/zend-code" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/zendframework/zend-eventmanager" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

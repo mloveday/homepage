@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>{% block title %}MilesLoveday.com{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-        <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
-        <link rel="icon" href="{{ asset('/assets/favicon.ico') }}">
+        {{ encore_entry_link_tags('app') }}
+        <link rel="icon" href="{{ asset('/favicon.ico') }}">
         {{ encore_entry_script_tags('turbolinks') }}
     </head>
     <body>

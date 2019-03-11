@@ -45,6 +45,11 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
+    .configureCssLoader(function ( options ) {
+    delete options.minimize;
+    delete options.sourceMap;
+    return options;
+} )
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()

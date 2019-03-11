@@ -1,0 +1,7 @@
+{
+  "build/app.js": "/build/app.js",
+  "build/runtime.js": "/build/runtime.js",
+  "build/turbolinks.js": "/build/turbolinks.js",
+  "build/vendors~app.js": "/build/vendors~app.js",
+  "build/vendors~turbolinks.js": "/build/vendors~turbolinks.js"
+}

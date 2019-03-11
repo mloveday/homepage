@@ -1,0 +1,18 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~app.js",
+        "/build/app.js"
+      ]
+    },
+    "turbolinks": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~turbolinks.js",
+        "/build/turbolinks.js"
+      ]
+    }
+  }
+}

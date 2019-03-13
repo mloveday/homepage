@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([["turbolinks"],{Q6BY:function(n,s,t){"use strict";t.r(s);var i=t("M8vm");t.n(i).a.start()}},[["Q6BY","runtime",1]]]);

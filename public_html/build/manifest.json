@@ -1,8 +1,8 @@
 {
-  "build/0.7a543a64.js": "/build/0.7a543a64.js",
-  "build/1.212c20e2.js": "/build/1.212c20e2.js",
-  "build/app.css": "/build/app.4a29b2ba.css",
-  "build/app.js": "/build/app.488879be.js",
-  "build/runtime.js": "/build/runtime.fa8f03f5.js",
-  "build/turbolinks.js": "/build/turbolinks.9b09a94b.js"
+  "build/app.css": "/build/app.css",
+  "build/app.js": "/build/app.js",
+  "build/runtime.js": "/build/runtime.js",
+  "build/turbolinks.js": "/build/turbolinks.js",
+  "build/vendors~app.js": "/build/vendors~app.js",
+  "build/vendors~turbolinks.js": "/build/vendors~turbolinks.js"
 }

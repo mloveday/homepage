@@ -1,0 +1,9 @@
+<div class="roadmap-item">
+    <h4 class="roadmap-title">{{ roadmapItem.title }}</h4>
+    <div class="roadmap-description">{{ roadmapItem.description }}</div>
+    <div class="roadmap-items">
+        {% for roadmapItemNested in roadmapItem.roadmaps %}
+            {{ include('index/partials/roadmap-item.html.twig',{roadmapItem: roadmapItemNested}) }}
+        {% endfor %}
+    </div>
+</div>

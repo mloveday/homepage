@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="index-content roadmap-content">
+        <h2>Website development roadmap</h2>
+        <div>A public place to store a TODO list for the site. No timings for completion - it's just dependent on how much free time I have.</div>
+        <h3>To be done</h3>
+        <div class="roadmap todo">
+            {% for roadmapItem in roadmapsToBeDone %}
+                {{ include('index/partials/roadmap-item.html.twig',{roadmapItem: roadmapItem}) }}
+            {% endfor %}
+        </div>
+        <h3>Complete</h3>
+        <div class="roadmap complete">
+            {% for roadmapItem in roadmapsCompleted %}
+                {{ include('index/partials/roadmap-item.html.twig',{roadmapItem: roadmapItem}) }}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

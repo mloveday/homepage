@@ -12,7 +12,9 @@
     <body>
     <div id="app">
         <div class="header">
-            <button type="button" class="no-print nav-show-hide" v-on:click="toggleNav"><i class="fas fa-bars"></i></button>
+            <button type="button" class="no-print nav-show-hide" v-on:click="toggleNav">
+                <svg style="width: 14px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
+            </button>
             <h1>Miles Loveday</h1>
         </div>
         <div :class="showingNav ? 'site-wrapper show-nav' : 'site-wrapper show-content'" class="site-wrapper show-content">
@@ -27,6 +29,5 @@
     </div>
     {% block javascripts %}{% endblock %}
     {{ encore_entry_script_tags('app') }}
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </body>
 </html>

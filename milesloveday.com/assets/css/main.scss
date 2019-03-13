@@ -2,8 +2,9 @@
     font-family: 'Inter';
     font-style:  normal;
     font-weight: 400;
-    src: url("https://rsms.me/inter/font-files/Inter-Light.woff2?v=3.3") format("woff2"),
-    url("https://rsms.me/inter/font-files/Inter-Light.woff?v=3.3") format("woff");
+    font-display: optional;
+    src: url("/assets/Inter-Light.woff2") format("woff2"),
+    url("/assets/Inter-Light.woff") format("woff");
 }
 * {
     box-sizing: border-box;

@@ -18,10 +18,7 @@
             <h1>Miles Loveday</h1>
         </div>
         <div :class="showingNav ? 'site-wrapper show-nav' : 'site-wrapper show-content'" class="site-wrapper show-content">
-            <ul class="nav no-print">
-                <li class="nav-item"><a class="nav-anchor" href="{{ path("index") }}">Home</a></li>
-                <li class="nav-item"><a class="nav-anchor" href="{{ path("cv") }}">CV</a></li>
-            </ul>
+            {{ include('nav.html.twig') }}
             <div class="content">
                 {% block body %}{% endblock %}
             </div>

@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="08598f5d-642e-458b-8b84-41616e0afa9e" name="ftp.milesloveday.com" url="https://ftp.milesloveday.com">
-        <fileTransfer host="ftp.milesloveday.com" port="21098" privateKey="C:\Users\miles\.ssh\milesloveday.com\id_rsa.ppk" accessType="SFTP" keyPair="true">
+        <fileTransfer host="ftp.milesloveday.com" port="21098" privateKey="C:\Users\miles\.ssh\milesloveday.com\id_rsa.ppk" rootFolder="/home/milehpsv" accessType="SFTP" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

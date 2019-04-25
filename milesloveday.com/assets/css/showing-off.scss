@@ -1,0 +1,23 @@
+.showing-off {
+  .waffle {
+    margin-top: 12px;
+  }
+  .image-wrapper {
+    max-width: 960px;
+    margin: 12px auto 0 auto;
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+    padding: 4px;
+  }
+  .screenshot {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid lightgrey;
+  }
+  .image-caption {
+    margin: 4px 0 8px 0;
+    font-style: italic;
+    font-size: 1.4rem;
+  }
+}

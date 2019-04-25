@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="index-content showing-off">
+        <h2>Plough books overview</h2>
+        <div class="showing-off-description">
+            <p class="waffle">
+                Over the last year or so, I've been developing a <a href="https://dashboard.milesloveday.com">dashboard</a> for a local pub to help solve the problem of how much to spend on staffing when creating rotas for a given week. This quickly turned into an all-encompassing solution recording revenue via daily cash-ups, using this to show historical revenues when predicting revenues (and hence setting labour rates) for a coming week, and finally comparing the planned shifts to those that actually happened, how much this cost and whether or not the labour rate for a day and week were hit.
+            </p>
+            <div class="image-wrapper">
+                <img class="screenshot" src="{{ asset('build/img/weekly-planning.png') }}" alt="Weekly planning screenshot"/>
+                <p class="image-caption">Weekly planning, where expected revenue and target labour rates are set for the week. Figures from previous weeks are shown below for reference.</p>
+            </div>
+            <p class="waffle">
+                An additional issue that this solved was that previously, all of this was stored on vast numbers of unwieldy spreadsheets, of which there was meant to be one source of truth, but in reality it was used by multiple people and one person's changes were occasionally overwritten by another. The idea was to have one source of truth for the data (initially Google Sheets, but that was found to be _very_ clunky and buggy), and the dashboard was developed to be less a monitor of daily figures, more a data store for all this stuff.
+            </p>
+            <div class="image-wrapper">
+                <img class="screenshot" src="{{ asset('build/img/bar-rota.png') }}" alt="Bar rota screenshot"/>
+                <p class="image-caption">A sample bar rota. The bright coloured numbers along the top indicate the staffing levels compared to what would be expected on a typical day given the expected revenue. Note the staff breaks are automatically estimated (these may change on the day, and can be set on the sign in page), and the estimated labour cost & rate is shown at the top.</p>
+            </div>
+            <p class="waffle">
+                The dashboard is written in PHP/Symfony/MariaDB in the back end, and Typescript/React/Symfony Encore in the front end. Given the company's use of Google accounts for other services, I used their Identity API to authenticate users and implemented some simple user control to allow/deny/restrict users access to the site. The backend is almost entirely an API-only affair, apart from serving the static site on navigating to it, with the front end handling most of the logic and doing grunt-work calculations. The styling is... basic at best. It's designed to be functional, and I'm sure it won't win any awards. It's not properly responsive yet - this needs some thought for the larger data-entry pages and I'm pretty time-limited on the project, so it's been shelved given the client's use case not requiring it.
+            </p>
+            <div class="image-wrapper">
+                <img class="screenshot" src="{{ asset('build/img/cash-up-receipts.png') }}" alt="Cash up receipts screenshot"/>
+                <p class="image-caption">Cash Up page, showing both incoming and outgoing receipts. The summary figures change as the cash up is edited.</p>
+            </div>
+            <p class="waffle">
+                I've learned quite a lot from doing this project, despite using familiar technologies (I've previously done heaps of PHP coding, mostly using Zend 1.12 but also a little Symfony, and have created a React project for a client before). Mostly I learned that some corners were better not cut. For instance, when creating the classes in the front end for things like the cash up, there were so many fields that I used Object.assign() quite liberally instead of creating new Objects with a constructor. I got tied in knots when parsing updates to objects using data from different sources (the API objects were slightly different to the objects used to update from user input), and had many, many issues from just being a little lax at the beginning. I made errors in reducers by being lax with typings there, and I tied myself in knots trying to cope with inputs that needed validation and converting to different types without making the user second-guess what the app was going to do when typing data into an input.
+            </p>
+            <div class="image-wrapper">
+                <img class="screenshot" src="{{ asset('build/img/code-staff-member-types.png') }}"
+                     alt="Code for the Staff Member abstract class and types"/>
+                <p class="image-caption">Define the types based on an abstract, generic class</p>
+            </div>
+            <div class="image-wrapper">
+                <img class="screenshot" src="{{ asset('build/img/code-staff-member.png') }}"
+                     alt="Code for the Staff Member class"/>
+                <p class="image-caption">Concrete class with static method for parsing API data & with method for
+                    updating one/some fields. Note the validation of the current hourly rate on line 29, which
+                    ensures that we always have a sensible figure when we come to persist it in the back end. In
+                    this case, it limits the figure to 2 decimal places and casts it to a number. The existing
+                    hourly rate is provided for graceful fallback.</p>
+            </div>
+            <div class="image-wrapper">
+                <img class="screenshot" src="{{ asset('build/img/code-staff-member-inputs.png') }}"
+                     alt="Code for the Staff Member inputs class"/>
+                <p class="image-caption">Concrete class for the inputs. Note that the types of the inputs are
+                    strings - this is what the HTML inputs give us. No validation or altering of the inputs is done
+                    here. Note that we now have to convert the hourly rate from a number when parsing the API
+                    response.</p>
+            </div>
+            <p class="waffle">The solution to the problems stated was fairly straightforward though it seemed tediously time-consuming to start with: write out types for the various possibilities for updating/creating objects, have different methods for parsing different types of data and store inputs next to but separately from the parsed data. Initially I was against doing this as it would involve writing out an object's fields multiple times, with minor tweaks between them, but I eventually came to a decent solution involving generics and combining types together that avoids having to define each object's field multiple times (see the screenshots above and/or <a href="https://github.com/mloveday/plough-books/blob/master/code/assets/Model/Shift/ShiftTypes.ts">here</a> for examples). Doing this essentially cut out a vast swath of bugs that I kept chasing round in circles, and made it easy to identify where I was attempting to do things that I shouldn't both in my IDE and when typescript was doing its magic and preventing the app from being built. It also allowed easy separation of raw user input from parsed data, and lets the browser tell the user that the data is invalid <span style="font-style: italic;">without changing what they've inputted</span>.
+            </p>
+            <div class="image-wrapper">
+                <img class="screenshot" src="{{ asset('build/img/weekly-overview.png') }}" alt="Weekly overview screenshot"/>
+                <p class="image-caption">Weekly overview. When viewing in the middle of an incomplete week, there is a row that shows what the week might end like if the expected revenues were to happen. Figures in brackets are the targets to be compared to, with green figures showing better than the target, and red showing worse than target. Also note that the percentages may not align as you may expect, due to the business rules around (for example) how fixed costs are distributed in a week.</p>
+            </div>
+            <p class="waffle">
+                Once the types were present, I started making sure I was typing incoming data from the API as early as possible, and ensuring the actions and reducers had types everywhere to make certain they were water-tight, too, squashing loads of bugs as I went. Essentially, doing Typescript properly, instead of using <span style="font-family: monospace;">foo(bar: any)</span> implicitly or otherwise and hoping for the best.
+            </p>
+            <div class="image-wrapper">
+                <img class="screenshot" src="{{ asset('build/img/data-entry-constants.png') }}" alt="Constants data entry screenshot"/>
+                <p class="image-caption">Data entry for "constants" - fixed costs, various rates (e.g. tax) that may change, albeit infrequently.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -13,6 +13,10 @@ class IndexController extends AbstractController {
     public function index() {
         return $this->render('index/index.html.twig', []);
     }
+    /** @Route("/dashboard", name="dashboard") */
+    public function dashboard() {
+        return $this->render('index/dashboard.html.twig', []);
+    }
     /** @Route("/cv", name="cv") */
     public function cv() {
         $cv = CV::myCv();

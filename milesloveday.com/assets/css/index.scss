@@ -1,9 +1,15 @@
 .list-of-links {
     list-style-type: initial;
     padding-left: 20px;
+
+    .link-item {
+        margin: 4px 0;
+    }
 }
 
 .index-content {
     display: grid;
     grid-gap: 8px;
+    max-width: 1280px;
+    margin: 0 auto;
 }

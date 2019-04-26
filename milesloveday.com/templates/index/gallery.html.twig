@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="index-content">
+        <h2>Sample responsive image gallery</h2>
+        <div class="gallery three-up">
+            <div class="image-wrapper square">
+                <img class="image" src="{{ asset('build/img/index-gallery/hero-image.jpg') }}" alt="Surprise!"/>
+                <div class="image-caption">Say what?</div>
+            </div>
+            <div class="image-wrapper landscape">
+                <img class="image" src="{{ asset('build/img/index-gallery/sample-train.jpg') }}" alt="Romney, Hythe & Dimchurch railway"/>
+                <div class="image-caption">Nothing quite like sticking your head out of a window and getting smut in your eyes.</div>
+            </div>
+            <div class="image-wrapper landscape">
+                <img class="image" src="{{ asset('build/img/index-gallery/sample-morning.jpg') }}" alt="Sunrise in Slovakia"/>
+                <div class="image-caption">Catching sunrise in Slovakia</div>
+            </div>
+            <div class="image-wrapper portrait">
+                <img class="image" src="{{ asset('build/img/index-gallery/brum-half.jpeg') }}" alt="Doing my best impression of the Head of the Navigator"/>
+                <div class="image-caption">Doing my best impression of the Head of the Navigator. Possibly thinking through a particularly gnarly bit of legacy PHP I have to refactor.</div>
+            </div>
+            <div class="image-wrapper landscape">
+                <img class="image" src="{{ asset('build/img/index-gallery/sample-night.jpg') }}" alt="Night sky"/>
+                <div class="image-caption">Late night in the middle of Slovakia</div>
+            </div>
+            <div class="image-wrapper square">
+                <img class="image" src="{{ asset('build/img/index-gallery/head-shot.jpg') }}" alt="Obligatory corporate head shot"/>
+                <div class="image-caption">Obligatory corporate head shot</div>
+            </div>
+            <div class="image-wrapper landscape">
+                <img class="image" src="{{ asset('build/img/index-gallery/sample-airborne.jpg') }}" alt="Flying in a microlight"/>
+                <div class="image-caption">A random gentleman took us up in his microlight, just to be nice.</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

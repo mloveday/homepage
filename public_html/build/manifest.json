@@ -6,18 +6,11 @@
   "build/vendors~app.js": "/build/vendors~app.js",
   "build/vendors~turbolinks.js": "/build/vendors~turbolinks.js",
   "build/img/bar-rota.png": "/build/img/bar-rota.png",
-  "build/img/Screenshot_2019-04-25 Plough Books.png": "/build/img/Screenshot_2019-04-25 Plough Books.png",
-  "build/img/weekly-planning.png": "/build/img/weekly-planning.png",
-  "build/img/Screen Shot 2019-04-25 at 12.57.09.png": "/build/img/Screen Shot 2019-04-25 at 12.57.09.png",
-  "build/img/Screen Shot 2019-04-25 at 13.02.18.png": "/build/img/Screen Shot 2019-04-25 at 13.02.18.png",
   "build/img/cash-up-receipts.png": "/build/img/cash-up-receipts.png",
-  "build/img/Screen Shot 2019-04-25 at 13.04.47.png": "/build/img/Screen Shot 2019-04-25 at 13.04.47.png",
-  "build/img/weekly-overview.png": "/build/img/weekly-overview.png",
-  "build/img/Screen Shot 2019-04-25 at 13.07.08.png": "/build/img/Screen Shot 2019-04-25 at 13.07.08.png",
-  "build/img/data-entry-constants.png": "/build/img/data-entry-constants.png",
-  "build/img/code-staff-member.PNG": "/build/img/code-staff-member.PNG",
-  "build/img/code-staff-member-inputs.PNG": "/build/img/code-staff-member-inputs.PNG",
-  "build/img/code-staff-member.png": "/build/img/code-staff-member.png",
   "build/img/code-staff-member-inputs.png": "/build/img/code-staff-member-inputs.png",
-  "build/img/code-staff-member-types.png": "/build/img/code-staff-member-types.png"
+  "build/img/code-staff-member-types.png": "/build/img/code-staff-member-types.png",
+  "build/img/code-staff-member.png": "/build/img/code-staff-member.png",
+  "build/img/data-entry-constants.png": "/build/img/data-entry-constants.png",
+  "build/img/weekly-overview.png": "/build/img/weekly-overview.png",
+  "build/img/weekly-planning.png": "/build/img/weekly-planning.png"
 }

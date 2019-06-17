@@ -16,7 +16,7 @@
                 <div class="employer-date">{{ employer.date }}</div>
                 <div class="employer-name">{{ employer.name }}</div>
                 <div class="employer-title">{{ employer.title }}</div>
-                <div class="employer-description">{{ employer.description }}</div>
+                <div class="employer-description">{{ employer.description|raw }}</div>
             </div>
             {% endfor %}
         </div>

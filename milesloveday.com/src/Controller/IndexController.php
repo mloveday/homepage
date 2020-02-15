@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\CV\CV;
 use App\Entity\Roadmap\RoadmapEntity;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 
 class IndexController extends AbstractController {
 
@@ -16,6 +18,11 @@ class IndexController extends AbstractController {
     /** @Route("/dashboard", name="dashboard") */
     public function dashboard() {
         return $this->render('index/dashboard.html.twig', []);
+    }
+    /** @Route("/test", name="test") */
+    public function test(MarkdownParserInterface $parser) {
+        $html = $parser->transformMarkdown(file_get_contents(__DIR__.'/../../../dev/coding-to-reduce-cognitive-load.md'));
+        return new Response($html);
     }
     /** @Route("/cv", name="cv") */
     public function cv() {

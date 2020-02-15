@@ -8,6 +8,7 @@ Sometimes you're just lumped with something. You're not allowed a rewrite (thoug
 ## What makes you sad?
 Sometimes the thing that makes it painful is not the shiny new feature, it's that your time is wasted because of some really slow, painful issue to do with tooling. Ask yourself if that can be mitigated.
 
+### Upgrading a build tool - Grunt to Webpack
 For example, a recent project I worked on had an AngularJS (yup, Angular 1) built with Grunt, running in a Vagrant box in the dev environment. It worked, did the job, but there were a couple of issues when actually making any sort of changes to code.
 
 Firstly, html templates and js were separate. That's not too much of an issue, but if you're trying to navigate between various components to see where things are rendered, or tracing back through said components to discover where a variable was instantiated, it doubles the number of files you look through, and the constant switching between camel and kebab casing for names of components and their definitions is painful. The solution? Inline the template in the component's definition. Instantly there are half as many files around, and whilst you can end up with some monstrously long files, that's really an issue with overly large components rather than this setup. Another downside is that some people simply don't like having it all together (html in a .js file? Blasphemy!), but personally (using lots of React & JSX) I like having it all in one place.
@@ -22,15 +23,15 @@ Lastly, is there anything silly going on? We were running Grunt inside the vagra
 
 As a source of pain, Grunt was it. Not the code, the legacy framework, the dev tooling. Replacing it was relatively simple, took a few days, but we really reaped the benefits. 
 
-- add basic shell scripts for really common stuff
-    - saves time and effort remembering console commands or flags
-    - allows for super-easy db reset scripts to get you back to square one for testing, e.g. migrations
-- document everything you find surprising
-    - put it in the most difficult to miss place, e.g. in a doc block in the entity/service/whatever that has the surprising behaviour
-- automate the hell out of getting vms set up
-    - pretty much everything can be automated
-    - ansible and ansible-galaxy get you a long way towards this without having to know everything about everything
-    - write scripts for stuff that needs to be done manually post-provision
+### Really simple stuff to make life easier
+
+Sounds quite simple, but documentation can quite often read like this: "when you need to do x, just run this command `some-command --with --lots --of --really --important --flags`". Instead of doing that, create a scripts folder close to the project root (something like 'scripts' or 'dev-scripts'), and make a well-named shell script that does said task. Were the task to change, or if it's a multi-stage process (e.g. DB reset script), just update the script and everyone reaps the rewards without having to change anything. Even better, if you use a vm, the provisioning can directly refer to the script to help get stuff set up automatically.
+
+Document everything you find surprising. Whenever you find some kind of gotcha, write it down in a difficult to miss place. readmes are all well and good, but quite often they're more of a reference to look at _after_ something's gone wrong and you're looking to fix it, or just as a quick reference for a command to run. Better than documenting there is in the code itself, close to where the surprising thing happens, i.e. in a difficult to miss spot in the code that is affected by it.
+
+Automate the hell out of the boring stuff. Starting a project from a fresh checkout of the source control is a fairly rare occurrence, so it's not like we're going to be saving tonnes of time, but it's a much nicer experience for a new dev to not have to do loads of copy-pasting seemingly random commands before they can actually do anything. There's not much that can't be done automatically with a VM, so it's always nice to make it seamless, and you'll thank yourself for doing it when your VM explodes for whatever reason, or you have to reset after trying a random upgrade of something and it all goes wonky.
+Using Ansible & Ansible Galaxy with a vagrant box is particularly friendly. You can set up a nice production-like environment with limited configuration, and best of all, the config you do specify can be re-used for production (or at the very least documenting what production should look like).
+As a bonus, if you write the scripts for provisioning carefully, they can be the very same scripts devs use to help automate common tasks. For example, a DB reset script could be run during provisioning so that the dev does not need to set one up manually. This same reset script could be used for setting up a test DB.
 
 ## Make it easy to read (see blog post 1)
 - PHP-CS & PHPStan is your friend

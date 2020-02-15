@@ -7,7 +7,7 @@ use App\Entity\Roadmap\RoadmapEntity;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class IndexController extends AbstractController {
 
@@ -19,10 +19,14 @@ class IndexController extends AbstractController {
     public function dashboard() {
         return $this->render('index/dashboard.html.twig', []);
     }
-    /** @Route("/test", name="test") */
-    public function test(MarkdownParserInterface $parser) {
-        $html = $parser->transformMarkdown(file_get_contents(__DIR__.'/../../../dev/coding-to-reduce-cognitive-load.md'));
-        return new Response($html);
+    /** @Route("/test/{slug}", name="test") */
+    public function test(string $slug) {
+        $fileLocation = __DIR__."/../../../dev/$slug.md";
+        if (!file_exists($fileLocation)) {
+            throw new NotFoundHttpException("Blog post with name $slug not found");
+        }
+        $blogPost = file_get_contents($fileLocation);
+        return $this->render('index/blog-post.html.twig', ['blog_post' => $blogPost]);
     }
     /** @Route("/cv", name="cv") */
     public function cv() {

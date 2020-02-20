@@ -1,0 +1,30 @@
+- hosts: all
+  become: true
+  become_method: sudo
+  vars:
+    php_version: '7.3'
+    php_enable_php_fpm: true
+    php_packages_extra:
+      - "php{{php_version}}-zip"
+    apache_remove_default_vhost: true
+    apache_vhosts:
+      - servername: "milesloveday.com"
+        documentroot: "/vagrant/public_html"
+        extra_parameters: |
+          ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000/vagrant/public_html"
+  roles:
+    - geerlingguy.apache
+    - geerlingguy.php-versions
+    - geerlingguy.php
+    - geerlingguy.php-xdebug
+    - geerlingguy.apache-php-fpm
+    - geerlingguy.composer
+  tasks:
+    - name: Vagrant | Bash config
+      become: true
+      blockinfile:
+        path: "/home/vagrant/.bashrc"
+        block: |
+          export REMOTE_HOST=$(netstat -rn | grep '^0.0.0.0 ' | cut -d ' ' -f10)
+          alias phpd="php -d xdebug.remote_autostart=1 -d xdebug.remote_host=$REMOTE_HOST"
+          cd /vagrant >& /dev/null

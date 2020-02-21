@@ -28,3 +28,6 @@
           export REMOTE_HOST=$(netstat -rn | grep '^0.0.0.0 ' | cut -d ' ' -f10)
           alias phpd="php -d xdebug.remote_autostart=1 -d xdebug.remote_host=$REMOTE_HOST"
           cd /vagrant >& /dev/null
+    - name: Vagrant | Permissions
+      become: true
+      command: "bash /vagrant/scripts/permissions.sh"

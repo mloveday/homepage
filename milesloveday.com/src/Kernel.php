@@ -25,6 +25,22 @@ class Kernel extends BaseKernel
         }
     }
 
+    public function getCacheDir()
+    {
+        if ($this->environment === 'dev') {
+            return '/tmp/symfony/cache';
+        }
+        return dirname(__DIR__).'/var/'.$this->environment.'/cache';
+    }
+
+    public function getLogDir()
+    {
+        if ($this->environment === 'dev') {
+            return '/tmp/symfony/log';
+        }
+        return dirname(__DIR__).'/var/'.$this->environment.'/log';
+    }
+
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $container->addResource(new FileResource($this->getProjectDir().'/config/bundles.php'));

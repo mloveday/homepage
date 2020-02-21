@@ -1,0 +1,3 @@
+#lsapi_phpini /home/milehpsv/test.milesloveday.com/php.ini
+
+FallbackResource index.php

@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\CV\CV;
-use App\Entity\Roadmap\RoadmapEntity;
+use App\Model\CV\CV;
+use App\Model\Roadmap\RoadmapEntity;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;

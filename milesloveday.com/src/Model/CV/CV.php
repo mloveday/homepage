@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\CV;
+namespace App\Model\CV;
 
 class CV {
     /** @var string */
@@ -18,16 +18,6 @@ class CV {
     /** @var Interest[] */
     public $interests;
 
-    /**
-     * CV constructor.
-     * @param string $name
-     * @param string $email
-     * @param string $personalStatement
-     * @param Employer[] $employers
-     * @param Skill[] $skills
-     * @param Educator[] $educators
-     * @param Interest[] $interests
-     */
     public function __construct(string $name, string $email, string $personalStatement, array $employers, array $skills, array $educators, array $interests)
     {
         $this->name = $name;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\Roadmap;
+namespace App\Model\Roadmap;
 
 class RoadmapEntity {
     /** @var string */
@@ -10,11 +10,6 @@ class RoadmapEntity {
     /** @var RoadmapEntity[] */
     public $roadmaps;
 
-    /**
-     * @param string $title
-     * @param string $description
-     * @param RoadmapEntity[] $roadmaps
-     */
     public function __construct(string $title, string $description, array $roadmaps = [])
     {
         $this->title = $title;

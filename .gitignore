@@ -1,1 +1,3 @@
+**/build/
+**/vendor/
 /public_html/build/

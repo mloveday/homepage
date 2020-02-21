@@ -1,15 +1,13 @@
-.showing-off {
-  .waffle {
-    margin-top: 12px;
-  }
-  .image-wrapper {
-    max-width: 960px;
-    margin: 12px auto 0 auto;
-    border: 1px solid lightgrey;
-    border-radius: 4px;
-    padding: 4px;
-  }
-  .screenshot {
+.waffle {
+  margin-top: 12px;
+}
+.image-wrapper {
+  max-width: 960px;
+  margin: 12px auto 0 auto;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  padding: 4px;
+  .image {
     max-width: 100%;
     margin: 0 auto;
     display: block;
@@ -19,5 +17,83 @@
     margin: 4px 0 8px 0;
     font-style: italic;
     font-size: 1.4rem;
+    text-align: center;
+    a {
+      font-size: 1.4rem;
+    }
+  }
+}
+.gallery {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-gap: 4px;
+  &.three-up {
+    @include mq($until: tablet) {
+      grid-template-columns: 1fr;
+    }
+    @include mq($from: tablet, $until: desktop) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @include mq($from: desktop) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  &.special-case-example {
+    @include mq($until: tablet) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    @include mq($from: tablet, $until: desktop) {
+      grid-template-columns: repeat(3, 1fr);
+      .image-wrapper {
+        &.width-1 {
+          grid-column-end: span 1;
+        }
+        &.width-2 {
+          grid-column-end: span 2;
+        }
+        &.width-3 {
+          grid-column-end: span 3;
+        }
+      }
+    }
+    @include mq($from: desktop) {
+      grid-template-columns: repeat(6, 1fr);
+      .image-wrapper {
+        &.width-1 {
+          grid-column-end: span 1;
+        }
+        &.width-2 {
+          grid-column-end: span 2;
+        }
+        &.width-3 {
+          grid-column-end: span 3;
+        }
+      }
+    }
+  }
+  .image-wrapper {
+    margin: 0;
+    &.square {
+      grid-row-end: span 1;
+      grid-column-end: span 1;
+    }
+    &.portrait {
+      grid-column-end: span 1;
+      @include mq($until: tablet) {
+        grid-row-end: span 1;
+      }
+      @include mq($from: tablet) {
+        grid-row-end: span 2;
+      }
+    }
+    &.landscape {
+      grid-row-end: span 1;
+      @include mq($until: tablet) {
+        grid-column-end: span 1;
+      }
+      @include mq($from: tablet) {
+        grid-column-end: span 2;
+      }
+    }
   }
 }

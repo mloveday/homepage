@@ -1,0 +1,1 @@
+ansible-galaxy install -r provision/requirements.yml

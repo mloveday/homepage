@@ -28,6 +28,10 @@ class IndexController extends AbstractController {
         $blogPost = file_get_contents($fileLocation);
         return $this->render('index/blog-post.html.twig', ['blog_post' => $blogPost]);
     }
+    /** @Route("/gallery", name="gallery") */
+    public function gallery() {
+        return $this->render('index/gallery.html.twig', []);
+    }
     /** @Route("/cv", name="cv") */
     public function cv() {
         $cv = CV::myCv();

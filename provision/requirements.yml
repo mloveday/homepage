@@ -1,0 +1,8 @@
+# ansible-galaxy requirements for provisioning
+---
+- geerlingguy.apache
+- geerlingguy.apache-php-fpm
+- geerlingguy.php-versions
+- geerlingguy.php
+- geerlingguy.php-xdebug
+- geerlingguy.composer

@@ -1,9 +1,23 @@
 .list-of-links {
-    list-style-type: initial;
-    padding-left: 20px;
+    list-style-type: none;
+    display: grid;
+    grid-gap: 4px;
 
     .link-item {
-        margin: 4px 0;
+        border: 1px solid #eee;
+        padding: 4px;
+        border-radius: 4px;
+    }
+
+    .anchor-with-image {
+        display: flex;
+        align-items: center;
+    }
+
+    .link-image {
+        width: 64px;
+        height: 64px;
+        margin: 4px;
     }
 }
 

@@ -4,12 +4,45 @@
     <div class="index-content">
         <h2>Hello World!</h2>
         <div>Totally over-engineered personal webpage for hosting <a href="{{ path("cv") }}">a CV</a> and eventually various odds & sods like hobby projects, photos, etc. For those interested, back end is in Symfony 4, front end with some very basic Vue and a sprinkling of Turbolinks because why not?</div>
-        <div>In a very Geocities kinda way, have some links to stuff:</div>
+        <h3>Have some links to stuff:</h3>
         <ul class="list-of-links">
             <li class="link-item"><a href="{{ path("dashboard") }}">A write up</a> and <a href="https://dashboard.milesloveday.com">a demo version</a> of some of my work (please <a href="mailto:contactme@milesloveday.com">contact me</a> for access to anything over and above the landing page - this requires a Google account)</li>
-            <li class="link-item"><a href="https://github.com/mloveday">My github profile</a></li>
-            <li class="link-item"><a href="https://www.linkedin.com/in/miles-loveday-85882188">My LinkedIn profile</a></li>
+
+            <li class="link-item">
+                <a class="anchor-with-image" href="https://github.com/mloveday" target="_blank">
+                    <svg width="64" height="64" class="link-image" viewBox="0 0 16 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    <span>My github profile {{ include('index/partials/external-link.html.twig') }}</span>
+                </a>
+            </li>
+
+            <li class="link-item">
+                <a class="anchor-with-image" href="https://www.linkedin.com/in/miles-loveday-85882188" target="_blank">
+                    <img class="link-image" src="{{ asset('build/img/index-gallery/head-shot.jpg') }}" alt="Me"/>
+                    <span>My LinkedIn profile {{ include('index/partials/external-link.html.twig') }}</span>
+                </a>
+            </li>
+
+            <li class="link-item">
+                <a href="https://www.softwire.com/" target="_blank">My most recent employer, Softwire. {{ include('index/partials/external-link.html.twig') }}</a> Projects that I worked on include <a href="https://www.bbc.com/introducing" target="_blank">BBC Introducing {{ include('index/partials/external-link.html.twig') }}</a> and <a href="https://www.softwire.com/case-study/david-lloyd/" target="_blank">David Lloyd Leisure {{ include('index/partials/external-link.html.twig') }}</a> (check out my cameo in their promotional <a href="https://www.youtube.com/watch?v=j46bn_RZsbs" target="_blank">video {{ include('index/partials/external-link.html.twig') }}</a> at approx 1:56)
+            </li>
         </ul>
+        <h3>Also have a responsive image gallery</h3>
+        <div>See the actual gallery <a href="{{ path("gallery") }}">here</a>. Uses grid to pack the images as close as possible - note that the order of the images may change.</div>
+        <div class="gallery special-case-example">
+            <div class="image-wrapper square width-1">
+                <img class="image" src="{{ asset('build/img/index-gallery/screenshot-mobile.jpg') }}" alt="Screenshot of mobile gallery">
+                <div class="image-caption">Gallery at mobile sizes</div>
+            </div>
+            <div class="image-wrapper square width-2">
+                <img class="image" src="{{ asset('build/img/index-gallery/screenshot-tablet.jpg') }}" alt="Screenshot of tablet gallery">
+                <div class="image-caption">Gallery at tablet sizes</div>
+            </div>
+            <div class="image-wrapper square width-3">
+                <img class="image" src="{{ asset('build/img/index-gallery/screenshot-desktop.jpg') }}" alt="Screenshot of desktop gallery">
+                <div class="image-caption">Gallery at desktop sizes</div>
+            </div>
+        </div>
+        <div>For mobile (portrait), you'll see a single column of images, for tablet/mobile landscape you'll see two columns, and for desktop you'll see three columns.</div>
         <div class="footer no-print">Best viewed in a browser of some kind</div>
     </div>
 {% endblock %}

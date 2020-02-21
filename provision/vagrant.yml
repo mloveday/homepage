@@ -2,6 +2,8 @@
   become: true
   become_method: sudo
   vars:
+    # python interpreter needs to be set for geerlingguy.mysql (see https://github.com/geerlingguy/ansible-role-mysql/issues/344)
+    ansible_python_interpreter: python3
     php_version: '7.3'
     php_enable_php_fpm: true
     php_packages_extra:
@@ -19,6 +21,7 @@
     - geerlingguy.php-xdebug
     - geerlingguy.apache-php-fpm
     - geerlingguy.composer
+    - geerlingguy.mysql
   tasks:
     - name: Vagrant | Bash config
       become: true

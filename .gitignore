@@ -1,3 +1,6 @@
 **/build/
 **/vendor/
 /public_html/build/
+/.vagrant/
+/provision/ansible-galaxy-roles/
+/ubuntu-bionic-18.04-cloudimg-console.log

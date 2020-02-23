@@ -42,6 +42,16 @@ class CvEmployer
      */
     private $curriculumVitae;
 
+    /**
+     * @ORM\Column(type="boolean", options={"default":false})
+     */
+    private $archived = false;
+
+    /**
+     * @ORM\Column(type="integer", options={"default":1})
+     */
+    private $displayOrder = 1;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +114,28 @@ class CvEmployer
     {
         $this->curriculumVitae = $curriculumVitae;
 
+        return $this;
+    }
+
+    public function isArchived(): bool
+    {
+        return $this->archived;
+    }
+
+    public function setArchived(bool $archived): CvEmployer
+    {
+        $this->archived = $archived;
+        return $this;
+    }
+
+    public function getDisplayOrder(): int
+    {
+        return $this->displayOrder;
+    }
+
+    public function setDisplayOrder(int $displayOrder): CvEmployer
+    {
+        $this->displayOrder = $displayOrder;
         return $this;
     }
 }

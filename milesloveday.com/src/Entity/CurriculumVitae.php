@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,6 +53,16 @@ class CurriculumVitae
      * @ORM\OneToMany(targetEntity="App\Entity\CvInterest", mappedBy="curriculumVitae", orphanRemoval=true)
      */
     private $interests;
+
+    /**
+     * @ORM\Column(type="boolean", options={"default":false})
+     */
+    private $archived = false;
+
+    /**
+     * @ORM\Column(type="integer", options={"default":1})
+     */
+    private $displayOrder = 1;
 
     public function __construct()
     {
@@ -107,7 +118,11 @@ class CurriculumVitae
      */
     public function getEmployers(): Collection
     {
-        return $this->employers;
+        return $this->employers->matching(
+            Criteria::create()
+                ->where(Criteria::expr()->eq('archived', false))
+                ->orderBy(['displayOrder' => Criteria::ASC])
+        );
     }
 
     public function addEmployer(CvEmployer $employer): self
@@ -138,7 +153,11 @@ class CurriculumVitae
      */
     public function getSkills(): Collection
     {
-        return $this->skills;
+        return $this->skills->matching(
+            Criteria::create()
+                ->where(Criteria::expr()->eq('archived', false))
+                ->orderBy(['displayOrder' => Criteria::ASC])
+        );
     }
 
     public function addSkill(CvSkill $skill): self
@@ -169,7 +188,11 @@ class CurriculumVitae
      */
     public function getEducators(): Collection
     {
-        return $this->educators;
+        return $this->educators->matching(
+            Criteria::create()
+                ->where(Criteria::expr()->eq('archived', false))
+                ->orderBy(['displayOrder' => Criteria::ASC])
+        );
     }
 
     public function addEducator(CvEducator $educator): self
@@ -200,7 +223,11 @@ class CurriculumVitae
      */
     public function getInterests(): Collection
     {
-        return $this->interests;
+        return $this->interests->matching(
+            Criteria::create()
+                ->where(Criteria::expr()->eq('archived', false))
+                ->orderBy(['displayOrder' => Criteria::ASC])
+        );
     }
 
     public function addInterest(CvInterest $interest): self
@@ -223,6 +250,28 @@ class CurriculumVitae
             }
         }
 
+        return $this;
+    }
+
+    public function isArchived(): bool
+    {
+        return $this->archived;
+    }
+
+    public function setArchived(bool $archived): CurriculumVitae
+    {
+        $this->archived = $archived;
+        return $this;
+    }
+
+    public function getDisplayOrder(): int
+    {
+        return $this->displayOrder;
+    }
+
+    public function setDisplayOrder(int $displayOrder): CurriculumVitae
+    {
+        $this->displayOrder = $displayOrder;
         return $this;
     }
 }

@@ -16,6 +16,7 @@
         extra_parameters: |
           ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000/vagrant/public_html"
   roles:
+    - geerlingguy.swap
     - geerlingguy.apache
     - geerlingguy.php-versions
     - geerlingguy.php

@@ -16,9 +16,9 @@
             <h2>Employment History</h2>
             {% for employer in cv.employers %}
             <div class="section-group employer-group">
-                <div class="employer-date">{{ employer.date }}</div>
+                <div class="employer-date">{{ employer.dates }}</div>
                 <div class="employer-name">{{ employer.name }}</div>
-                <div class="employer-title">{{ employer.title }}</div>
+                <div class="employer-title">{{ employer.name }}</div>
                 <div class="employer-description">{{ employer.description|raw }}</div>
             </div>
             {% endfor %}
@@ -36,7 +36,7 @@
             <h2>Education</h2>
             {% for educator in cv.educators %}
             <div class="section-group education-group">
-                <div class="education-date">{{ educator.date }}</div>
+                <div class="education-date">{{ educator.dates }}</div>
                 <div class="education-name">{{ educator.name }}</div>
                 <div class="education-title">{{ educator.title }}</div>
                 <div class="education-description"><p>{% for description in educator.description %}{{ description }}</p>{% endfor %}</div>

@@ -2,9 +2,8 @@
 
 namespace App\Controller;
 
-use App\Model\CV\CV;
 use App\Model\Roadmap\RoadmapEntity;
-use Symfony\Component\HttpFoundation\Response;
+use App\Repository\CurriculumVitaeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -33,8 +32,8 @@ class IndexController extends AbstractController {
         return $this->render('index/gallery.html.twig', []);
     }
     /** @Route("/cv", name="cv") */
-    public function cv() {
-        $cv = CV::myCv();
+    public function cv(CurriculumVitaeRepository $curriculumVitaeRepository) {
+        $cv = $curriculumVitaeRepository->findMostRecentCv();
         return $this->render('index/cv.html.twig', [
             'cv' => $cv,
         ]);

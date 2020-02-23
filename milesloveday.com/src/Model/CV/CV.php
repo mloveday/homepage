@@ -58,7 +58,10 @@ class CV {
                 'Projects: \'Production Scheduling\' & \'Image Processing\'',
                 'Modules: Signals and Systems, Systems and Control, Signal and Pattern Processing, Data Transmission, Computer and Network Systems, Software Engineering and Design, Introduction to Bioscience, Physiological Systems, Business Economics, Organisational Behaviour and Change.'
             ]),
-            new Educator('1994 - 2001','King Edward VI Camp Hill, Birmingham','GCSE, A-levels',['AAA in Maths, Further Maths, Physics at A-level','3 Grade A*, 5 Grade A, 2 Grade B at GCSE']),
+            new Educator('1994 - 2001','King Edward VI Camp Hill, Birmingham','GCSE, A-levels',[
+                'AAA in Maths, Further Maths, Physics at A-level',
+                '3 Grade A*, 5 Grade A, 2 Grade B at GCSE'
+            ]),
         ];
 
         $interests = [

@@ -19,6 +19,14 @@ class CurriculumVitaeRepository extends ServiceEntityRepository
         parent::__construct($registry, CurriculumVitae::class);
     }
 
+    public function findMostRecentCv(): CurriculumVitae
+    {
+        return $this->createQueryBuilder('cv')
+            ->orderBy('cv.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()->getSingleResult();
+    }
+
     // /**
     //  * @return CurriculumVitae[] Returns an array of CurriculumVitae objects
     //  */

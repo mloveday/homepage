@@ -10,7 +10,7 @@
         </div>
         <div class="section personal-statement">
             <h2>Personal Statement</h2>
-            <p>{{ cv.personalStatement }}</p>
+            <p>{{ cv.personalStatement|markdown }}</p>
         </div>
         <div class="section work-history">
             <h2>Employment History</h2>
@@ -19,7 +19,7 @@
                 <div class="employer-date">{{ employer.dates }}</div>
                 <div class="employer-name">{{ employer.name }}</div>
                 <div class="employer-title">{{ employer.name }}</div>
-                <div class="employer-description">{{ employer.description|raw }}</div>
+                <div class="employer-description">{{ employer.description|markdown }}</div>
             </div>
             {% endfor %}
         </div>
@@ -28,7 +28,7 @@
             {% for skill in cv.skills %}
             <div class="section-group skill-group">
                 <h3 class="skill-title">{{ skill.title }}</h3>
-                <div class="skill-description">{{ skill.description }}</div>
+                <div class="skill-description">{{ skill.description|markdown }}</div>
             </div>
             {% endfor %}
         </div>
@@ -39,7 +39,7 @@
                 <div class="education-date">{{ educator.dates }}</div>
                 <div class="education-name">{{ educator.name }}</div>
                 <div class="education-title">{{ educator.title }}</div>
-                <div class="education-description"><p>{% for description in educator.description %}{{ description }}</p>{% endfor %}</div>
+                <div class="education-description">{{ educator.description|markdown }}</div>
             </div>
             {% endfor %}
         </div>
@@ -48,7 +48,7 @@
             {% for interest in cv.interests %}
             <div class="section-group interest-group">
                 <h3 class="interest-headline">{{ interest.title }}</h3>
-                <div class="interest-description">{{ interest.description }}</div>
+                <div class="interest-description">{{ interest.description|markdown }}</div>
             </div>
             {% endfor %}
         </div>

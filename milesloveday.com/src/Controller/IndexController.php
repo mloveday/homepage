@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Model\Roadmap\RoadmapEntity;
 use App\Repository\BlogPostRepository;
 use App\Repository\CurriculumVitaeRepository;
@@ -21,7 +22,11 @@ class IndexController extends AbstractController {
     }
     /** @Route("/blog/{slug}", name="blog") */
     public function test(string $slug, BlogPostRepository $blogPostRepository) {
-        $blogPost = $blogPostRepository->findOneBy(['slug' => $slug]);
+        if ($this->getUser() === null) {
+            $blogPost = $blogPostRepository->findOneBy(['slug' => $slug, 'archived' => false]);
+        } else {
+            $blogPost = $blogPostRepository->findOneBy(['slug' => $slug]);
+        }
         if (!$blogPost) {
             throw new NotFoundHttpException('Blog post not found');
         }

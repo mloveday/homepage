@@ -13,6 +13,8 @@ else
     echo "Front end deps installed successfully"
 fi
 
+echo "WARNING: build directory needs to be manually uploaded at present"
+
 yarn build
 
 echo "Copying files to remote host..."

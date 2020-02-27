@@ -6,15 +6,21 @@
     src: url("/assets/Inter-Light.woff2") format("woff2"),
     url("/assets/Inter-Light.woff") format("woff");
 }
+
+.header, .nav {
+ * {
+     margin: 0;
+     padding: 0;
+     border: none;
+ }
+}
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    border: none;
     font-size: 1.6rem;
     line-height: 1.5em;
     background: transparent;
 }
+
 html {
     font-size: 10px;
     font-family: 'Inter', sans-serif;
@@ -65,6 +71,9 @@ h2 {
 }
 
 .nav {
+    margin: 0;
+    padding: 0;
+    border: none;
     z-index: 1;
     height: 100%;
     width: 320px;

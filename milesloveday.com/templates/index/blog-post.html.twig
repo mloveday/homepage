@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h1>{{ blog_post.title|markdown }}</h1>
-    {{ blog_post.content|markdown }}
+    <div class="blog-content">
+        <h1>{{ blog_post.title }}</h1>
+        {{ blog_post.content|markdown }}
+    </div>
 {% endblock %}

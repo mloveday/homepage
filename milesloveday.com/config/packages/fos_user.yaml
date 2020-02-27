@@ -1,0 +1,9 @@
+fos_user:
+  db_driver: orm
+  firewall_name: internal
+  user_class: App\Entity\User
+  from_email:
+    address: "%env(resolve:MAILER_USER)%"
+    sender_name: "%env(resolve:MAILER_USER)%"
+  service:
+    mailer: fos_user.mailer.twig_swift

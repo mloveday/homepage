@@ -208,6 +208,8 @@
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/monolog-bundle" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/michelf/php-markdown" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/knplabs/knp-markdown-bundle" />
+      <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/templating" />
+      <path value="$PROJECT_DIR$/milesloveday.com/vendor/friendsofsymfony/user-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

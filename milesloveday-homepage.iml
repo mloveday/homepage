@@ -28,6 +28,7 @@
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/facebook/webdriver" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/fig/link-util" />
+      <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/friendsofsymfony/user-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/jdorn/sql-formatter" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/knplabs/knp-markdown-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/michelf/php-markdown" />
@@ -95,6 +96,7 @@
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/symfony/serializer-pack" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/symfony/stopwatch" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/symfony/swiftmailer-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/symfony/templating" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/symfony/test-pack" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/symfony/twig-bridge" />

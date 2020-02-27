@@ -5,7 +5,7 @@
       <webServer id="08598f5d-642e-458b-8b84-41616e0afa9e" name="ftp.milesloveday.com" url="https://milesloveday.com">
         <fileTransfer host="ftp.milesloveday.com" port="21" accessType="FTPS">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" showHiddenFiles="true" />
           </advancedOptions>
           <option name="port" value="21" />
         </fileTransfer>

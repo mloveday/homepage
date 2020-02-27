@@ -115,16 +115,13 @@
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/web-profiler-bundle" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/debug-bundle" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/process" />
-      <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/panther" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/easycorp/easy-log-handler" />
-      <path value="$PROJECT_DIR$/milesloveday.com/vendor/facebook/webdriver" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/twig/twig" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/composer" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/psr/cache" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/psr/container" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/psr/log" />
-      <path value="$PROJECT_DIR$/milesloveday.com/vendor/psr/simple-cache" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/jdorn/sql-formatter" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/sensio/framework-extra-bundle" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/egulias/email-validator" />
@@ -149,7 +146,6 @@
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/dependency-injection" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/serializer" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/flex" />
-      <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/contracts" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/http-kernel" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/security-guard" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/options-resolver" />
@@ -175,7 +171,6 @@
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/doctrine/doctrine-bundle" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/doctrine/common" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/doctrine/reflection" />
-      <path value="$PROJECT_DIR$/milesloveday.com/vendor/doctrine/doctrine-cache-bundle" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/doctrine/collections" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/doctrine/annotations" />
@@ -192,7 +187,6 @@
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/zendframework/zend-code" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/swiftmailer-bundle" />
-      <path value="$PROJECT_DIR$/milesloveday.com/vendor/fig/link-util" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/twig-bridge" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/polyfill-php72" />
@@ -210,6 +204,14 @@
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/knplabs/knp-markdown-bundle" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/templating" />
       <path value="$PROJECT_DIR$/milesloveday.com/vendor/friendsofsymfony/user-bundle" />
+      <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/milesloveday.com/vendor/symfony/service-contracts" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

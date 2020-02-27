@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 DATE=`date '+%Y-%m-%d-%H%M%S'`
-DEPLOY_DIRECTORY="/home/dashboard/deploy/$DATE/"
-CONNECTION_AND_DIRECTORY="milehpsv@server187.web-hosting.com:$DEPLOY_DIRECTORY -p 21098"
+DEPLOY_DIRECTORY="milesloveday.com"
+CONNECTION="milehpsv@server187.web-hosting.com:$DEPLOY_DIRECTORY"
 PRIVATE_KEY="~/.ssh/id_rsa"
 
 yarn install
@@ -13,20 +13,16 @@ else
     echo "Front end deps installed successfully"
 fi
 
-yarn prebuildtest
-#todo stop on test failure
-
 yarn build
 
 echo "Copying files to remote host..."
-ssh dashboard@dashboard.theploughharborne.co.uk "mkdir -p $DEPLOY_DIRECTORY"
-rsync -rvz --exclude ".git" --exclude ".idea" --exclude "assets" --exclude "infrastructure" --exclude "node_modules" --exclude "vagrant" --exclude "var" --exclude "vendor" ./ $CONNECTION_AND_DIRECTORY
+rsync -rvz --exclude ".git" --exclude ".idea" --exclude "assets" --exclude "infrastructure" --exclude "node_modules" --exclude "vagrant" --exclude "var" --exclude "vendor" ./ $CONNECTION
 
 echo "Running setup on remote host..."
-ssh dashboard@dashboard.theploughharborne.co.uk "cd $DEPLOY_DIRECTORY ; ./setup.sh"
+ssh $CONNECTION "cd $DEPLOY_DIRECTORY ; ./setup.sh"
 
-echo "Creating symlink to new directory..."
-ssh dashboard@dashboard.theploughharborne.co.uk "ln -nfs $DEPLOY_DIRECTORY/public/ /home/dashboard/public_html"
-echo "Removing old deployments..."
-ssh dashboard@dashboard.theploughharborne.co.uk "rm -rf /home/dashboard/deploy/!($DATE)"
+#echo "Creating symlink to new directory..."
+#ssh admin@milesloveday.com "ln -nfs $DEPLOY_DIRECTORY/public/ /home/dashboard/public_html"
+#echo "Removing old deployments..."
+#ssh admin@milesloveday.com "rm -rf /home/dashboard/deploy/!($DATE)"
 echo "Deployment complete"

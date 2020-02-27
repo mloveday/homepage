@@ -35,22 +35,22 @@ class CurriculumVitae
     private $personalStatement;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CvEmployer", mappedBy="curriculumVitae", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\CvEmployer", mappedBy="curriculumVitae", orphanRemoval=true, cascade={"PERSIST"})
      */
     private $employers;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CvSkill", mappedBy="curriculumVitae", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\CvSkill", mappedBy="curriculumVitae", orphanRemoval=true, cascade={"PERSIST"})
      */
     private $skills;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CvEducator", mappedBy="curriculumVitae", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\CvEducator", mappedBy="curriculumVitae", orphanRemoval=true, cascade={"PERSIST"})
      */
     private $educators;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CvInterest", mappedBy="curriculumVitae", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\CvInterest", mappedBy="curriculumVitae", orphanRemoval=true, cascade={"PERSIST"})
      */
     private $interests;
 

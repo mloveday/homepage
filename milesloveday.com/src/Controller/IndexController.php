@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\Roadmap\RoadmapEntity;
+use App\Repository\BlogPostRepository;
 use App\Repository\CurriculumVitaeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,13 +19,12 @@ class IndexController extends AbstractController {
     public function dashboard() {
         return $this->render('index/dashboard.html.twig', []);
     }
-    /** @Route("/test/{slug}", name="test") */
-    public function test(string $slug) {
-        $fileLocation = __DIR__."/../../../dev/$slug.md";
-        if (!file_exists($fileLocation)) {
-            throw new NotFoundHttpException("Blog post with name $slug not found");
+    /** @Route("/blog/{slug}", name="blog") */
+    public function test(string $slug, BlogPostRepository $blogPostRepository) {
+        $blogPost = $blogPostRepository->findOneBy(['slug' => $slug]);
+        if (!$blogPost) {
+            throw new NotFoundHttpException('Blog post not found');
         }
-        $blogPost = file_get_contents($fileLocation);
         return $this->render('index/blog-post.html.twig', ['blog_post' => $blogPost]);
     }
     /** @Route("/gallery", name="gallery") */
@@ -34,7 +34,7 @@ class IndexController extends AbstractController {
     /** @Route("/cv", name="cv") */
     public function cv(CurriculumVitaeRepository $curriculumVitaeRepository) {
         $cv = $curriculumVitaeRepository->findMostRecentCv();
-        return $this->render('index/cv.html.twig', [
+        return $this->render('index/form.html.twig', [
             'cv' => $cv,
         ]);
     }

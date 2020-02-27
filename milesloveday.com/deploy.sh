@@ -18,7 +18,7 @@ echo "WARNING: build directory needs to be manually uploaded at present"
 yarn build
 
 echo "Copying files to remote host..."
-rsync -rvz --exclude ".git" --exclude ".idea" --exclude "assets" --exclude "infrastructure" --exclude "node_modules" --exclude "vagrant" --exclude "var" --exclude "vendor" ./ $CONNECTION
+rsync -rvz --exclude ".env" --exclude ".env.local" --exclude ".git" --exclude ".idea" --exclude "assets" --exclude "infrastructure" --exclude "node_modules" --exclude "vagrant" --exclude "var" --exclude "vendor" ./ $CONNECTION
 
 echo "Running setup on remote host..."
 ssh $CONNECTION "cd $DEPLOY_DIRECTORY ; ./setup.sh"

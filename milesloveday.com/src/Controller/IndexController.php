@@ -34,7 +34,7 @@ class IndexController extends AbstractController {
     /** @Route("/cv", name="cv") */
     public function cv(CurriculumVitaeRepository $curriculumVitaeRepository) {
         $cv = $curriculumVitaeRepository->findMostRecentCv();
-        return $this->render('index/form.html.twig', [
+        return $this->render('index/cv.html.twig', [
             'cv' => $cv,
         ]);
     }

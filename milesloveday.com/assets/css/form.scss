@@ -1,0 +1,29 @@
+div.form-group {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 4fr;
+}
+
+fieldset.form-group {
+  legend {
+    font-weight: bold;
+    font-size: large;
+  }
+  #cv_employers, #cv_skills, #cv_educators, #cv_interests {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+  }
+  fieldset.form-group {
+    border: 1px solid lightgrey;
+    padding: 8px;
+    legend {
+      display:none;
+    }
+  }
+}
+
+// Bump the importance above bootstrap
+textarea.form-control.form-control {
+  height: 200px;
+}

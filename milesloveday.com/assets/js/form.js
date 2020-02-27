@@ -17,14 +17,14 @@ import '../css/form.scss';
         $collectionHolder.data('index', index + 1);
 
         // Display the form in the page in an li, before the "Add a {thing}" link li
-        const $newFormLi = jQuery('<li></li>').append(newForm);
+        const $newFormLi = jQuery('<div></div>').append(newForm);
         $newLinkLi.before($newFormLi);
     };
 
     jQuery(document).ready(() => {
         const $collectionHolder = $(`#${propName}`);
-        const $addButton = $(`<button type="button" class="add_link">Add ${propName}</button>`);
-        const $newLinkLi = $('<li></li>').append($addButton);
+        const $addButton = $(`<button type="button" class="add_link btn-primary btn">Add ${propName}</button>`);
+        const $newLinkLi = $('<div></div>').append($addButton);
 
         $collectionHolder.append($newLinkLi);
         // count the current form inputs we have (e.g. 2), use that as the new

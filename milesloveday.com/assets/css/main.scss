@@ -27,12 +27,23 @@ html {
 }
 body {
     overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+h1, h2, h3 {
+    margin: 0.25em 0;
 }
 h1 {
     font-size: 2rem;
 }
 h2 {
     font-size: 1.8rem;
+}
+p {
+    margin: 0;
+    padding: 0;
+    border: none;
 }
 
 .header {

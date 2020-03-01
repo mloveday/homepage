@@ -16,8 +16,16 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /** @Route("/admin") */
 class AdminController extends AbstractController {
+    /** @Route("", name="admin_index") */
+    public function index(BlogPostRepository $blogPostRepository) {
+        $blogPosts = $blogPostRepository->getList(true);
+        return $this->render('admin/index.html.twig', [
+            'blogPosts' => $blogPosts,
+        ]);
+    }
+
     /** @Route("/cv", name="admin_cv") */
-    public function index(Request $request, CurriculumVitaeRepository $curriculumVitaeRepository) {
+    public function cv(Request $request, CurriculumVitaeRepository $curriculumVitaeRepository) {
 
         $cv = $curriculumVitaeRepository->findMostRecentCv();
         $form = $this->createForm(CVType::class, $cv);

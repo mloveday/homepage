@@ -1,0 +1,18 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block body %}
+    <h2>Edit CV</h2>
+    <a href="/admin/cv">CV</a>
+    <h2>Blog Posts</h2>
+    <ul>
+    {% for blogPost in blogPosts %}
+        <li><a href="/admin/blog/{{ blogPost.slug }}">{{ blogPost.title }}</a>{% if blogPost.archived %} (archived){% endif %}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

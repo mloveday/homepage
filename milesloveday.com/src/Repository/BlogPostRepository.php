@@ -19,32 +19,24 @@ class BlogPostRepository extends ServiceEntityRepository
         parent::__construct($registry, BlogPost::class);
     }
 
-    // /**
-    //  * @return BlogPost[] Returns an array of BlogPost objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function getBySlug(string $slug, bool $includeArchived = false)
     {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $qb = $this->createQueryBuilder('b')
+            ->where('b.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->orderBy('b.id', 'DESC');
+        if (!$includeArchived) {
+            $qb->andWhere('b.archived = false');
+        }
+        return $qb->getQuery()->getResult();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?BlogPost
+    public function getList(bool $includeArchived = false)
     {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $qb = $this->createQueryBuilder('b');
+        if (!$includeArchived) {
+            $qb->andWhere('b.archived = false');
+        }
+        return $qb->getQuery()->getResult();
     }
-    */
 }

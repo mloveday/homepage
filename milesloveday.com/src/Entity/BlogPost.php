@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +36,11 @@ class BlogPost
      * @ORM\Column(type="boolean")
      */
     private $archived;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $publishDate;
 
     public function getId(): ?int
     {
@@ -86,6 +92,17 @@ class BlogPost
     {
         $this->archived = $archived;
 
+        return $this;
+    }
+
+    public function getPublishDate(): ?DateTime
+    {
+        return $this->publishDate;
+    }
+
+    public function setPublishDate($publishDate): self
+    {
+        $this->publishDate = $publishDate;
         return $this;
     }
 }

@@ -23,19 +23,21 @@ class BlogPostRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('b')
             ->where('b.slug = :slug')
-            ->setParameter('slug', $slug)
-            ->orderBy('b.id', 'DESC');
+            ->setParameter('slug', $slug);
         if (!$includeArchived) {
-            $qb->andWhere('b.archived = false');
+            $qb->andWhere('b.publishDate < CURRENT_TIMESTAMP()')
+               ->andWhere('b.archived = false');
         }
         return $qb->getQuery()->getSingleResult();
     }
 
     public function getList(bool $includeArchived = false)
     {
-        $qb = $this->createQueryBuilder('b');
+        $qb = $this->createQueryBuilder('b')
+            ->orderBy('b.publishDate', 'DESC');
         if (!$includeArchived) {
-            $qb->andWhere('b.archived = false');
+            $qb->andWhere('b.publishDate < CURRENT_TIMESTAMP()')
+                ->andWhere('b.archived = false');
         }
         return $qb->getQuery()->getResult();
     }

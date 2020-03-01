@@ -16,6 +16,14 @@ class IndexController extends AbstractController {
         return $this->render('index/index.html.twig', []);
     }
 
+    /** @Route("/_internal/nav", name="nav_render") */
+    public function nav(BlogPostRepository $blogPostRepository)
+    {
+        return $this->render('nav.html.twig', [
+            'blogPosts' => $blogPostRepository->getList($this->getUser() !== null),
+        ]);
+    }
+
     /** @Route("/dashboard", name="dashboard") */
     public function dashboard() {
         return $this->render('index/dashboard.html.twig', []);

@@ -28,7 +28,7 @@ class BlogPostRepository extends ServiceEntityRepository
         if (!$includeArchived) {
             $qb->andWhere('b.archived = false');
         }
-        return $qb->getQuery()->getResult();
+        return $qb->getQuery()->getSingleResult();
     }
 
     public function getList(bool $includeArchived = false)

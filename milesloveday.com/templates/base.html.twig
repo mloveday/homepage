@@ -19,7 +19,7 @@
             <h1>Miles Loveday</h1>
         </div>
         <div :class="showingNav ? 'site-wrapper show-nav' : 'site-wrapper show-content'" class="site-wrapper show-content">
-            {{ include('nav.html.twig') }}
+            {{ render(path('nav_render')) }}
             <div class="content">
                 {% block body %}{% endblock %}
             </div>

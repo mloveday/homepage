@@ -1,6 +1,11 @@
 <ul class="nav no-print">
     <li class="nav-item"><a class="nav-anchor" href="{{ path("index") }}">Home</a></li>
     <li class="nav-item"><a class="nav-anchor" href="{{ path("cv") }}">CV</a></li>
+    {% if blogPosts is defined and blogPosts is not empty %}
+        {% for blogPost in blogPosts %}
+            <li class="nav-item"><a class="nav-anchor" href="{{ path("blog", {'slug': blogPost.slug}) }}">Blog: {{ blogPost.title }}</a></li>
+        {% endfor %}
+    {% endif %}
     <li class="nav-item"><a class="nav-anchor" href="{{ path("dashboard") }}">Dashboard overview</a></li>
     <li class="nav-item"><a class="nav-anchor" href="{{ path("gallery") }}">Responsive gallery example</a></li>
     <li class="nav-item"><a class="nav-anchor" href="{{ path("roadmap") }}">Roadmap</a></li>

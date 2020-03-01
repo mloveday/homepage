@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Model\Roadmap\RoadmapEntity;
 use App\Repository\BlogPostRepository;
 use App\Repository\CurriculumVitaeRepository;
@@ -16,26 +15,26 @@ class IndexController extends AbstractController {
     public function index() {
         return $this->render('index/index.html.twig', []);
     }
+
     /** @Route("/dashboard", name="dashboard") */
     public function dashboard() {
         return $this->render('index/dashboard.html.twig', []);
     }
+
     /** @Route("/blog/{slug}", name="blog") */
-    public function test(string $slug, BlogPostRepository $blogPostRepository) {
-        if ($this->getUser() === null) {
-            $blogPost = $blogPostRepository->findOneBy(['slug' => $slug, 'archived' => false]);
-        } else {
-            $blogPost = $blogPostRepository->findOneBy(['slug' => $slug]);
-        }
+    public function blog(string $slug, BlogPostRepository $blogPostRepository) {
+        $blogPost = $blogPostRepository->getBySlug($slug, $this->getUser() !== null);
         if (!$blogPost) {
             throw new NotFoundHttpException('Blog post not found');
         }
         return $this->render('index/blog-post.html.twig', ['blog_post' => $blogPost]);
     }
+
     /** @Route("/gallery", name="gallery") */
     public function gallery() {
         return $this->render('index/gallery.html.twig', []);
     }
+
     /** @Route("/cv", name="cv") */
     public function cv(CurriculumVitaeRepository $curriculumVitaeRepository) {
         $cv = $curriculumVitaeRepository->findMostRecentCv();
@@ -43,24 +42,13 @@ class IndexController extends AbstractController {
             'cv' => $cv,
         ]);
     }
+
     /** @Route("/roadmap", name="roadmap") */
     public function roadmap() {
         $todo = [
             new RoadmapEntity('Complete roadmap page', 'Currently incomplete', [
                 new RoadmapEntity('Content', 'Requires some meaningful stuff putting into it.'),
                 new RoadmapEntity('Styling', 'Currently looks rubbish.'),
-            ]),
-            new RoadmapEntity('Technical', 'All the behind the scenes stuff that still needs doing', [
-                new RoadmapEntity('Authentication', 'Create login, users, etc. Research lots before starting...'),
-                new RoadmapEntity('Database', 'Create a database for storing data. Migrations for existing data &.CRUD pages for future stuff'),
-                new RoadmapEntity('Deployment', 'Make it super-easy to deploy', [
-                    new RoadmapEntity('Scripts', 'Modify slightly wonky deploy scripts', []),
-                    new RoadmapEntity('Git vs SFTP', 'Fetch from git rather than _slowly_ copy from local machine', []),
-                ]),
-            ]),
-            new RoadmapEntity('CV', 'Update my CV', [
-                new RoadmapEntity('Skills', 'Order them appropriately', []),
-                new RoadmapEntity('General work', 'Check copy throughout & generally update', []),
             ]),
             new RoadmapEntity('About page / contact', 'Quite important.', [
                 new RoadmapEntity('Content','Write small amount of copy for page', []),

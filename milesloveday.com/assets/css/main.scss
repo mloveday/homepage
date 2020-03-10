@@ -41,7 +41,7 @@ h2 {
     font-size: 1.8rem;
 }
 p {
-    margin: 0 0.5em;
+    margin: 0.5em 0;
     padding: 0;
     border: none;
 }
@@ -79,6 +79,10 @@ p {
     width: 100vw;
     z-index: 0;
     padding: 8px;
+}
+
+.blog-content {
+    padding: 0 2rem;
 }
 
 .nav {

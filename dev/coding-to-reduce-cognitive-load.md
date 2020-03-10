@@ -13,12 +13,12 @@ Yup, that old classic. Make a function that does one thing and does it well. Giv
 If you're calling a setter on an entity, make it return the object so you can make repeated setter calls on it.
 
 ## Don't use useless type hints
-If you're using static typing (and you should, unless you're some kind of robot that never makes a typo or someone who hates QOL stuff like autocompletion of method names), avoid using any (in, e.g. Typescript) or mixed (PHP). It doesn't help, the next guy just has to do the mental calculation themselves and it stops them in their tracks.
+If you're using static typing (and you should, unless you're some kind of robot that never makes a typo or someone who hates QOL stuff like autocompletion of method names), avoid using `any` (in, e.g. Typescript) or `mixed` (PHP). It doesn't help, the next guy just has to do the mental calculation themselves and it stops them in their tracks.
 
 ## Make links between disconnected stuff
 OK, a little more specific this one, basically it boils down to specifying strings as constants or in enums and using them instead of just typing out the string.
 
-Service A fires an event using a string. It makes this string by concatenating various things together for some reason. When we look at Consumers B, C, D, E, etc, how do we know where the call is made? For that matter, how do we know what is going to happen when Service A dispatches the event? I know it probably makes for a few more lines of code, but a switch statement with direct references to a class constant makes that link between the service that dispatches the event and the consumer much more concrete, i.e. that a (rather smart) dumb IDE can simply click through between them rather than the poor dev having to do a lot of thinking.
+Service A fires an event using a string. It makes this string by concatenating various things together for some reason. When we look at Consumers B, C, D, E, etc, how do we know where the originating call is made? For that matter, how do we know what is going to happen when Service A dispatches the event? I know it probably makes for a few more lines of code, but a switch statement with direct references to a class constant makes that link between the service that dispatches the event and the consumer much more concrete, i.e. that a (rather smart) dumb IDE can simply click through between them rather than the poor dev having to do a lot of thinking.
 
 Likewise, validating form types can happen within a method of the entity it is meant to be validating. Everything is laid out for all to see in the entity itself rather than having to search through various validation classes.
 

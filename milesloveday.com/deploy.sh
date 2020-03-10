@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 DEPLOY_DIRECTORY="milesloveday.com"
-CONNECTION_AND_DEPLOY_DIRECTORY="milehpsv@server187.web-hosting.com:$DEPLOY_DIRECTORY"
-CONNECTION_AND_PUBLIC_DIRECTORY="milehpsv@server187.web-hosting.com:public_html"
+CONNECTION="milehpsv@server187.web-hosting.com"
+CONNECTION_AND_DEPLOY_DIRECTORY="$CONNECTION:$DEPLOY_DIRECTORY"
+CONNECTION_AND_PUBLIC_DIRECTORY="$CONNECTION:public_html"
 
 yarn install
 if [[ "$?" -ne "0" ]]; then
@@ -18,10 +19,10 @@ yarn build
 
 echo "Copying files to remote host..."
 rsync -rvz --exclude ".env" --exclude ".env.local" --exclude ".git" --exclude ".idea" --exclude "assets" --exclude "infrastructure" --exclude "node_modules" --exclude "vagrant" --exclude "var" --exclude "vendor" ./ $CONNECTION_AND_DEPLOY_DIRECTORY
-rsync -rvz --exclude ".htaccess" ../public_html $CONNECTION_AND_PUBLIC_DIRECTORY
+rsync -rvz --exclude ".htaccess" ../public_html/ $CONNECTION_AND_PUBLIC_DIRECTORY
 
 echo "Running setup on remote host..."
-ssh $CONNECTION_AND_DEPLOY_DIRECTORY "cd $DEPLOY_DIRECTORY ; ./setup.sh"
+ssh $CONNECTION "cd $DEPLOY_DIRECTORY ; ./setup.sh"
 
 #echo "Creating symlink to new directory..."
 #ssh admin@milesloveday.com "ln -nfs $DEPLOY_DIRECTORY/public/ /home/dashboard/public_html"

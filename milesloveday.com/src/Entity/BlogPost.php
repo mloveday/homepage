@@ -55,7 +55,6 @@ class BlogPost
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
         return $this;
     }
 
@@ -67,7 +66,6 @@ class BlogPost
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
-
         return $this;
     }
 
@@ -79,7 +77,6 @@ class BlogPost
     public function setContent(string $content): self
     {
         $this->content = $content;
-
         return $this;
     }
 
@@ -91,7 +88,6 @@ class BlogPost
     public function setArchived(bool $archived): self
     {
         $this->archived = $archived;
-
         return $this;
     }
 

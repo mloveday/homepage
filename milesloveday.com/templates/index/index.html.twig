@@ -23,26 +23,19 @@
             </li>
 
             <li class="link-item">
-                <a href="https://www.softwire.com/" target="_blank">My most recent employer, Softwire. {{ include('index/partials/external-link.html.twig') }}</a> Projects that I worked on include <a href="https://www.bbc.com/introducing" target="_blank">BBC Introducing {{ include('index/partials/external-link.html.twig') }}</a> and <a href="https://www.softwire.com/case-study/david-lloyd/" target="_blank">David Lloyd Leisure {{ include('index/partials/external-link.html.twig') }}</a> (check out my cameo in their promotional <a href="https://www.youtube.com/watch?v=j46bn_RZsbs" target="_blank">video {{ include('index/partials/external-link.html.twig') }}</a> at approx 1:56)
+                <a href="https://www.softwire.com/" target="_blank">A previous employer, Softwire. {{ include('index/partials/external-link.html.twig') }}</a> Projects that I worked on include <a href="https://www.bbc.com/introducing" target="_blank">BBC Introducing {{ include('index/partials/external-link.html.twig') }}</a> and <a href="https://www.softwire.com/case-study/david-lloyd/" target="_blank">David Lloyd Leisure {{ include('index/partials/external-link.html.twig') }}</a> (check out my cameo in their promotional <a href="https://www.youtube.com/watch?v=j46bn_RZsbs" target="_blank">video {{ include('index/partials/external-link.html.twig') }}</a> at approx 1:56)
             </li>
         </ul>
-        <h3>Also have a responsive image gallery</h3>
-        <div>See the actual gallery <a href="{{ path("gallery") }}">here</a>. Uses grid to pack the images as close as possible - note that the order of the images may change.</div>
-        <div class="gallery special-case-example">
-            <div class="image-wrapper square width-1">
-                <img class="image" src="{{ asset('build/img/index-gallery/screenshot-mobile.jpg') }}" alt="Screenshot of mobile gallery">
-                <div class="image-caption">Gallery at mobile sizes</div>
-            </div>
-            <div class="image-wrapper square width-2">
-                <img class="image" src="{{ asset('build/img/index-gallery/screenshot-tablet.jpg') }}" alt="Screenshot of tablet gallery">
-                <div class="image-caption">Gallery at tablet sizes</div>
-            </div>
-            <div class="image-wrapper square width-3">
-                <img class="image" src="{{ asset('build/img/index-gallery/screenshot-desktop.jpg') }}" alt="Screenshot of desktop gallery">
-                <div class="image-caption">Gallery at desktop sizes</div>
-            </div>
-        </div>
-        <div>For mobile (portrait), you'll see a single column of images, for tablet/mobile landscape you'll see two columns, and for desktop you'll see three columns.</div>
+        <h3>Some recent blog posts</h3>
+        <ul class="list-of-links">
+            {% for blogPost in blogPosts %}{# @var App\Entity\BlogPost $blogPost #}
+                <li class="link-item">
+                    <a href="{{ path("blog", {'slug': blogPost.slug}) }}" class="blog-post-link">
+                        {{ blogPost.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
         <div class="footer no-print">Best viewed in a browser of some kind</div>
     </div>
 {% endblock %}

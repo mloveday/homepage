@@ -1,31 +1,12 @@
 import * as React from 'react';
 import {SomeEntity} from "../Model/SomeEntity";
 import styled from 'styled-components';
+import {TextInput} from "./TextInput";
 
 const Properties = styled.div`
   display: grid;
   grid-auto-flow: row;
   grid-gap: 8px;
-`;
-
-const PropertyWrapper = styled.div`
-  border: 1px solid #eee;
-  border-radius: 4px;
-  padding: 8px;
-`;
-
-const Input = styled.input`
-  border: 1px solid #ddd;
-  margin: 1px;
-  border-radius: 4px;
-  padding: 6px;
-  &:focus {
-    border: 1px solid #aaa;
-  }
-  &.invalid {
-    border: 2px solid #f66;
-    margin: 0;
-  }
 `;
 
 export const ReactFormExample: React.FC = props => {
@@ -71,26 +52,8 @@ export const ReactFormExample: React.FC = props => {
   }
   return <div>
     <Properties>
-
-      <PropertyWrapper>
-        <label>Name <Input type='text' value={someEntity.name.input} onChange={ev => setSomeEntity(someEntity.with({name: ev.target.value}))} /></label>
-        <div>Original API value: {someEntity.name.api}</div>
-        <div>Input value: {someEntity.name.input}</div>
-        <div>Parsed (last known good) value: {someEntity.name.value}</div>
-        <div>Is valid?: {someEntity.name.isValid() ? 'yup' : 'nope'}</div>
-        <div>Is dirty?: {someEntity.name.isDirty ? 'yup' : 'nope'}</div>
-      </PropertyWrapper>
-
-      <PropertyWrapper>
-        <label>Quantity <Input className={someEntity.quantity.isValid() ? 'valid' : 'invalid'} type='text' value={someEntity.quantity.input} onChange={ev => setSomeEntity(someEntity.with({quantity: ev.target.value}))} /></label>
-        <div>Original API value: {someEntity.quantity.api}</div>
-        <div>Input value: {someEntity.quantity.input}</div>
-        <div>Parsed (last known good) value: {someEntity.quantity.value}</div>
-        <div>Is valid?: {someEntity.quantity.isValid() ? 'yup' : 'nope'}</div>
-        <div>{someEntity?.quantity.getValidityDescriptions().map((v,k) => <div key={k}>{v}</div>)}</div>
-        <div>Is dirty?: {someEntity.quantity.isDirty ? 'yup' : 'nope'}</div>
-      </PropertyWrapper>
-
+      <TextInput property={someEntity.name} onChange={value => setSomeEntity(someEntity.with({name: value}))}/>
+      <TextInput property={someEntity.quantity} onChange={value => setSomeEntity(someEntity.with({quantity: value}))}/>
     </Properties>
   </div>;
 };

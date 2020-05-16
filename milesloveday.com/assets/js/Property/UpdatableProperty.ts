@@ -16,13 +16,13 @@ export abstract class UpdatableProperty<I, A, V> {
     protected readonly parseInput: (input: I) => V; // helps to allow us to check validity of a given input. Useful for when api, value and input are different types, e.g. numeric inputs and dates
     protected readonly validationRules: ValidationRule<I>[]; // each rule object has a method that returns true for a valid input, and a user-readable description of why it failed
 
-    constructor(api: A, input: I, value: V, parseInput: (input: I) => V, validationRules: ValidationRule<I>[]) {
+    constructor(api: A, input: I, value: V, parseInput: (input: I) => V, validationRules: ValidationRule<I>[], isDirty: boolean) {
         this.api = api;
         this.input = input;
         this.value = value;
         this.parseInput = parseInput;
         this.validationRules = validationRules;
-        this.isDirty = true; // todo how do we set this
+        this.isDirty = isDirty;
     }
 
     // filter out rules that state the input is valid

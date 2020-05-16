@@ -5,7 +5,7 @@ const stringIsNotEmpty = new ValidationRule<string>(input => input !== '', 'Must
 
 export class LengthLimitedStringProperty extends UpdatableProperty<string, string, string> {
     public static fromApi(api: string) {
-        return new LengthLimitedStringProperty(api, api.toString(), api, input => input, [stringIsNotEmpty, stringIsNotTooLong]);
+        return new LengthLimitedStringProperty(api, api.toString(), api, input => input, [stringIsNotEmpty, stringIsNotTooLong], false);
     }
 
     public with(input?: string) {
@@ -13,6 +13,6 @@ export class LengthLimitedStringProperty extends UpdatableProperty<string, strin
             return this; // allows us to blindly input optional params of objects in a similar with method in the parent entity
         }
         // can do more complex stuff here if we're, e.g. converting between dates
-        return new LengthLimitedStringProperty(this.api, input, this.isInputValid(input) ? this.parseInput(input) : this.value, this.parseInput, this.validationRules);
+        return new LengthLimitedStringProperty(this.api, input, this.isInputValid(input) ? this.parseInput(input) : this.value, this.parseInput, this.validationRules, this.api !== input);
     }
 }

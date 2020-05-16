@@ -1,11 +1,6 @@
 <ul class="nav no-print">
     <li class="nav-item"><a class="nav-anchor" href="{{ path("index") }}">Home</a></li>
     <li class="nav-item"><a class="nav-anchor" href="{{ path("cv") }}">CV</a></li>
-    {% if blogPosts is defined and blogPosts is not empty %}
-        {% for blogPost in blogPosts %}
-            <li class="nav-item"><a class="nav-anchor" href="{{ path("blog", {'slug': blogPost.slug}) }}">Blog: {{ blogPost.title }}</a></li>
-        {% endfor %}
-    {% endif %}
     {% if app.user %}
         <li class="nav-item"><a class="nav-anchor" href="{{ path("admin_index") }}">Admin</a></li>
     {% endif %}

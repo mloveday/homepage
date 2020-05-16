@@ -29,8 +29,6 @@ const Button = styled.button`
 `;
 
 export const ReactFormExample: React.FC = props => {
-  // TODO show mock save button & disable when clean || invalid
-
   // hooks
   const [someEntity, setSomeEntity] = React.useState<SomeEntity>();
   const [fetchState, setFetchState] = React.useState<'empty'|'requested'|'loading'|'loaded'|'error'>('empty');

@@ -1,5 +1,18 @@
 import * as React from 'react';
 import {SomeEntity} from "../Model/SomeEntity";
+import styled from 'styled-components';
+
+const Properties = styled.div`
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 8px;
+`;
+
+const PropertyWrapper = styled.div`
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 8px;
+`;
 
 export const ReactFormExample: React.FC = props => {
   // TODO show mock save button & disable when clean || invalid
@@ -43,23 +56,27 @@ export const ReactFormExample: React.FC = props => {
     return <div>SomeEntity not found</div>
   }
   return <div>
-    <div>
-      <label>Name <input type='text' value={someEntity.name.input} onChange={ev => setSomeEntity(someEntity.with({name: ev.target.value}))} /></label>
-      <div>Original API value: {someEntity.name.api}</div>
-      <div>Input value: {someEntity.name.input}</div>
-      <div>Parsed (last known good) value: {someEntity.name.value}</div>
-      <div>Is valid?: {someEntity.name.isValid() ? 'yup' : 'nope'}</div>
-      <div>Is dirty?: {someEntity.name.isDirty ? 'yup' : 'nope'}</div>
-    </div>
+    <Properties>
 
-    <div>
-      <label>Quantity <input type='text' value={someEntity.quantity.input} onChange={ev => setSomeEntity(someEntity.with({quantity: ev.target.value}))} /></label>
-      <div>Original API value: {someEntity.quantity.api}</div>
-      <div>Input value: {someEntity.quantity.input}</div>
-      <div>Parsed (last known good) value: {someEntity.quantity.value}</div>
-      <div>Is valid?: {someEntity.quantity.isValid() ? 'yup' : 'nope'}</div>
-      <div>{someEntity?.quantity.getValidityDescriptions().map((v,k) => <div key={k}>{v}</div>)}</div>
-      <div>Is dirty?: {someEntity.quantity.isDirty ? 'yup' : 'nope'}</div>
-    </div>
+      <PropertyWrapper>
+        <label>Name <input type='text' value={someEntity.name.input} onChange={ev => setSomeEntity(someEntity.with({name: ev.target.value}))} /></label>
+        <div>Original API value: {someEntity.name.api}</div>
+        <div>Input value: {someEntity.name.input}</div>
+        <div>Parsed (last known good) value: {someEntity.name.value}</div>
+        <div>Is valid?: {someEntity.name.isValid() ? 'yup' : 'nope'}</div>
+        <div>Is dirty?: {someEntity.name.isDirty ? 'yup' : 'nope'}</div>
+      </PropertyWrapper>
+
+      <PropertyWrapper>
+        <label>Quantity <input type='text' value={someEntity.quantity.input} onChange={ev => setSomeEntity(someEntity.with({quantity: ev.target.value}))} /></label>
+        <div>Original API value: {someEntity.quantity.api}</div>
+        <div>Input value: {someEntity.quantity.input}</div>
+        <div>Parsed (last known good) value: {someEntity.quantity.value}</div>
+        <div>Is valid?: {someEntity.quantity.isValid() ? 'yup' : 'nope'}</div>
+        <div>{someEntity?.quantity.getValidityDescriptions().map((v,k) => <div key={k}>{v}</div>)}</div>
+        <div>Is dirty?: {someEntity.quantity.isDirty ? 'yup' : 'nope'}</div>
+      </PropertyWrapper>
+
+    </Properties>
   </div>;
 };

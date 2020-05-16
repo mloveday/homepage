@@ -14,12 +14,12 @@ export const ReactFormExample: React.FC = props => {
 
   // hooks
   const [someEntity, setSomeEntity] = React.useState<SomeEntity>();
-  const [fetchState, setFetchState] = React.useState<'empty'|'loading'|'loaded'|'error'>('empty');
+  const [fetchState, setFetchState] = React.useState<'empty'|'requested'|'loading'|'loaded'|'error'>('empty');
   const [abortController, setAbortController] = React.useState(new AbortController());
   React.useEffect(() => () => abortController.abort(), [abortController]); // abort "request" on dismount
 
   // local
-  if (fetchState === 'empty') {
+  if (fetchState === 'requested') {
     setFetchState('loading');
     // mock an API call with setTimeout
     setTimeout(() => {
@@ -27,7 +27,10 @@ export const ReactFormExample: React.FC = props => {
         // do nothing, as the "request" was aborted
         return;
       }
-      // TODO mock a failed request and show error handling
+      if (Math.random() < 0.2) {
+        setFetchState('error');
+        return;
+      }
       setFetchState('loaded');
       setSomeEntity(SomeEntity.fromApi({
         id: 1,
@@ -51,6 +54,8 @@ export const ReactFormExample: React.FC = props => {
     <p>
       The only validation on these are a rather annoying length limit of 9 characters on the name as well as it not being empty, and the quantity must be an integer (and by extension a number). They allow any text to be entered in, where in reality we might prevent this with a mask. Try it out, type some stuff in and see what happens.
     </p>
+    <p>Start the "API request" by clicking the load button. Approximately 1 in 5 requests will 'fail', showing an error message. The request can be retried by clicking the load button again.</p>
+    <button disabled={!['empty','loaded','error'].includes(fetchState)} onClick={() => setFetchState('requested')}>Load data</button>
   </div>);
 
   // render
@@ -58,7 +63,7 @@ export const ReactFormExample: React.FC = props => {
     case "empty":
       return <div>
         {Preamble}
-        Hi, nothing to see here yet
+        Hi, nothing to see here yet. Try clicking the load button to make a fake API request to get some data.
       </div>;
     case "loading":
       return <div>
@@ -68,7 +73,7 @@ export const ReactFormExample: React.FC = props => {
     case "error":
       return <div>
         {Preamble}
-        Whoops! Something went wrong
+        There was an error fulfilling the previous request - click the load button to retry
       </div>;
   }
 

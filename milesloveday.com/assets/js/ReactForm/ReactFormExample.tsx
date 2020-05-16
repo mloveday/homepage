@@ -62,6 +62,7 @@ export const ReactFormExample: React.FC = props => {
       <div>Input value: {someEntity.quantity.input}</div>
       <div>Parsed (last known good) value: {someEntity.quantity.value}</div>
       <div>Is valid?: {someEntity.quantity.isValid() ? 'yup' : 'nope'}</div>
+      <div>{someEntity?.quantity.getValidityDescriptions().map((v,k) => <div key={k}>{v}</div>)}</div>
       <div>Is dirty?: {someEntity.quantity.isDirty ? 'yup' : 'nope'}</div>
     </div>
   </div>;

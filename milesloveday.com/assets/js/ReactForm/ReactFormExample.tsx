@@ -14,6 +14,20 @@ const PropertyWrapper = styled.div`
   padding: 8px;
 `;
 
+const Input = styled.input`
+  border: 1px solid #ddd;
+  margin: 1px;
+  border-radius: 4px;
+  padding: 6px;
+  &:focus {
+    border: 1px solid #aaa;
+  }
+  &.invalid {
+    border: 2px solid #f66;
+    margin: 0;
+  }
+`;
+
 export const ReactFormExample: React.FC = props => {
   // TODO show mock save button & disable when clean || invalid
 
@@ -59,7 +73,7 @@ export const ReactFormExample: React.FC = props => {
     <Properties>
 
       <PropertyWrapper>
-        <label>Name <input type='text' value={someEntity.name.input} onChange={ev => setSomeEntity(someEntity.with({name: ev.target.value}))} /></label>
+        <label>Name <Input type='text' value={someEntity.name.input} onChange={ev => setSomeEntity(someEntity.with({name: ev.target.value}))} /></label>
         <div>Original API value: {someEntity.name.api}</div>
         <div>Input value: {someEntity.name.input}</div>
         <div>Parsed (last known good) value: {someEntity.name.value}</div>
@@ -68,7 +82,7 @@ export const ReactFormExample: React.FC = props => {
       </PropertyWrapper>
 
       <PropertyWrapper>
-        <label>Quantity <input type='text' value={someEntity.quantity.input} onChange={ev => setSomeEntity(someEntity.with({quantity: ev.target.value}))} /></label>
+        <label>Quantity <Input className={someEntity.quantity.isValid() ? 'valid' : 'invalid'} type='text' value={someEntity.quantity.input} onChange={ev => setSomeEntity(someEntity.with({quantity: ev.target.value}))} /></label>
         <div>Original API value: {someEntity.quantity.api}</div>
         <div>Input value: {someEntity.quantity.input}</div>
         <div>Parsed (last known good) value: {someEntity.quantity.value}</div>

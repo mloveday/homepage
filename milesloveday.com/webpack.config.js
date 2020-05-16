@@ -27,6 +27,7 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('form', './assets/js/form.js')
+    .addEntry('react-form', './assets/js/react-form-index.tsx')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -58,13 +59,13 @@ Encore
 } )
 
     // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
+    .enableTypeScriptLoader()
 
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
 
     // uncomment if you use API Platform Admin (composer req api-admin)
-    //.enableReactPreset()
+    .enableReactPreset()
     //.addEntry('admin', './assets/js/admin.js')
     // .enableVueLoader()
 ;

@@ -44,4 +44,10 @@ class IndexController extends AbstractController {
             'cv' => $cv,
         ]);
     }
+
+    /** @Route("/react-form-example", name="react-form-example") */
+    public function reactFormExample()
+    {
+        return $this->render('index/react-form-example.html.twig');
+    }
 }

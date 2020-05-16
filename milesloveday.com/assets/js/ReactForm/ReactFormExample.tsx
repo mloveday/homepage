@@ -78,8 +78,8 @@ export const ReactFormExample: React.FC = props => {
   return <div>
     {Preamble}
     <Properties>
-      <TextInput property={someEntity.name} onChange={value => setSomeEntity(someEntity.with({name: value}))}/>
-      <TextInput property={someEntity.quantity} onChange={value => setSomeEntity(someEntity.with({quantity: value}))}/>
+      <TextInput label={'Name'} property={someEntity.name} onChange={value => setSomeEntity(someEntity.with({name: value}))}/>
+      <TextInput label={'Quantity'} property={someEntity.quantity} onChange={value => setSomeEntity(someEntity.with({quantity: value}))}/>
     </Properties>
   </div>;
 };

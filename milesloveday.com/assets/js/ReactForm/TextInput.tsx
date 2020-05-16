@@ -64,11 +64,11 @@ const InputWrapper = styled.div`
   grid-template-columns: 2fr 1fr;
 `;
 
-export const TextInput: React.FC<{ property: UpdatableProperty<any, any, any>, onChange: (value: string) => void }> = props => {
+export const TextInput: React.FC<{ label: string, property: UpdatableProperty<any, any, any>, onChange: (value: string) => void }> = props => {
     return (
         <PropertyWrapper>
             <InputWrapper>
-                <label>Quantity <Input className={props.property.isValid() ? 'valid' : 'invalid'} type='text'
+                <label>{props.label} <Input className={props.property.isValid() ? 'valid' : 'invalid'} type='text'
                                        value={props.property.input} onChange={ev => props.onChange(ev.target.value)}/>
                 </label>
                 <div>{props.property.getValidityDescriptions().map((v, k) => <div key={k}>{v}</div>)}</div>

@@ -26,7 +26,7 @@ export abstract class UpdatableProperty<I, A, V> {
     }
 
     // filter out rules that state the input is valid
-    public isInputValid = (input: I): boolean => this.validationRules.filter(rule => !rule.isValid(input)).length > 0;
+    public isInputValid = (input: I): boolean => this.validationRules.filter(rule => !rule.isValid(input)).length === 0;
     public isValid = (): boolean => this.isInputValid(this.input);
     public getValidityDescriptions = (): string[] => this.validationRules.filter(rule => !rule.isValid(this.input)).map(rule => rule.description);
     public abstract with(input: I): UpdatableProperty<I, A, V>;

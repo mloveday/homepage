@@ -1,10 +1,11 @@
 import {UpdatableProperty, ValidationRule} from "./UpdatableProperty";
 
-const stringIsNotTooLong = new ValidationRule<string>(input => input.length < 10, 'Must be less than 10 characters long');
+const stringIsNotTooLong = new ValidationRule<string>(input => input.length < 10, 'Must be fewer than 10 characters long');
+const stringIsNotEmpty = new ValidationRule<string>(input => input !== '', 'Must not be empty');
 
 export class LengthLimitedStringProperty extends UpdatableProperty<string, string, string> {
     public static fromApi(api: string) {
-        return new LengthLimitedStringProperty(api, api.toString(), api, input => input, [stringIsNotTooLong]);
+        return new LengthLimitedStringProperty(api, api.toString(), api, input => input, [stringIsNotEmpty, stringIsNotTooLong]);
     }
 
     public with(input?: string) {

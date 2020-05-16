@@ -35,4 +35,11 @@ export class SomeEntity {
             this.quantity.with(obj.quantity),
         );
     };
+
+    public isValid = () => this.editableProperties.reduce((carry, prop) => carry && prop.isValid(), true);
+    public isDirty = () => this.editableProperties.reduce((carry, prop) => carry || prop.isDirty, false);
+
+    private get editableProperties() {
+        return [this.name, this.quantity];
+    }
 }

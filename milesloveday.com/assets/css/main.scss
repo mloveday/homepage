@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Inter';
+    font-style:  normal;
+    font-weight: 400;
+    font-display: optional;
+    src: url("/assets/Inter-Light.woff2") format("woff2"),
+    url("/assets/Inter-Light.woff") format("woff");
+}
+
 .header, .nav {
  * {
      margin: 0;
@@ -14,7 +23,7 @@
 
 html {
     font-size: 10px;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
 }
 body {
     margin: 0;

@@ -7,6 +7,9 @@ const PropertyWrapper = styled.div`
   border: 1px solid #eee;
   border-radius: 4px;
   padding: 8px;
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 8px;
 `;
 
 const Input = styled.input`
@@ -23,18 +26,80 @@ const Input = styled.input`
   }
 `;
 
+const StateFeedback = styled.div`
+  display: grid;
+  grid-gap: 4px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  background-color: #eee;
+`;
+
+const StateFeedbackTitle = styled.h5`
+  margin: 1rem 0;
+`;
+
+const StateFeedbackSubtitle = styled.div`
+  font-style: italic;
+  color: #666;
+`;
+
+const FeedbackTable = styled.table`
+  width: 320px;
+  border-collapse: collapse;
+  background: #fff;
+`;
+
+const FeedbackHeaderCell = styled.th`
+  border: 1px solid #ccc;
+  padding: 4px;
+`;
+
+const FeedbackCell = styled.td`
+  border: 1px solid #ccc;
+  padding: 4px;
+`;
+
 export const TextInput: React.FC<{ property: UpdatableProperty<any, any, any>, onChange: (value: string) => void }> = props => {
     return (
         <PropertyWrapper>
             <label>Quantity <Input className={props.property.isValid() ? 'valid' : 'invalid'} type='text'
                                    value={props.property.input} onChange={ev => props.onChange(ev.target.value)}/>
             </label>
-            <div>Original API value: {props.property.api}</div>
-            <div>Input value: {props.property.input}</div>
-            <div>Parsed (last known good) value: {props.property.value}</div>
-            <div>Is valid?: {props.property.isValid() ? 'yup' : 'nope'}</div>
             <div>{props.property.getValidityDescriptions().map((v, k) => <div key={k}>{v}</div>)}</div>
-            <div>Is dirty?: {props.property.isDirty ? 'yup' : 'nope'}</div>
+            <StateFeedback>
+                <StateFeedbackTitle>Internal state for property</StateFeedbackTitle>
+                <StateFeedbackSubtitle>
+                    This information would normally not be shown, but illustrates what is happening behind the scenes for the given property
+                </StateFeedbackSubtitle>
+                <FeedbackTable>
+                    <thead><tr>
+                        <FeedbackHeaderCell>Attribute</FeedbackHeaderCell>
+                        <FeedbackHeaderCell>Value</FeedbackHeaderCell>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <FeedbackCell>Original "API" value</FeedbackCell>
+                            <FeedbackCell>{props.property.api}</FeedbackCell>
+                        </tr>
+                        <tr>
+                            <FeedbackCell>User input</FeedbackCell>
+                            <FeedbackCell>{props.property.input}</FeedbackCell>
+                        </tr>
+                        <tr>
+                            <FeedbackCell>Last known good value</FeedbackCell>
+                            <FeedbackCell>{props.property.value}</FeedbackCell>
+                        </tr>
+                        <tr>
+                            <FeedbackCell>Is valid</FeedbackCell>
+                            <FeedbackCell>{props.property.isValid() ? 'yup' : 'nope'}</FeedbackCell>
+                        </tr>
+                        <tr>
+                            <FeedbackCell>Is dirty</FeedbackCell>
+                            <FeedbackCell>{props.property.isDirty ? 'yup' : 'nope'}</FeedbackCell>
+                        </tr>
+                    </tbody>
+                </FeedbackTable>
+            </StateFeedback>
         </PropertyWrapper>
     );
 };

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="index-content">
+        <h2>Recent blog posts</h2>
+        <ul class="list-of-links">
+            {% for blogPost in blogPosts %}{# @var App\Entity\BlogPost $blogPost #}
+                <li class="link-item">
+                    <a href="{{ path("blog", {'slug': blogPost.slug}) }}" class="blog-post-link">
+                        {{ blogPost.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

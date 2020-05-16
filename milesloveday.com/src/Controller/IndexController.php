@@ -22,6 +22,12 @@ class IndexController extends AbstractController {
         return $this->render('index/dashboard.html.twig', []);
     }
 
+    /** @Route("/blog", name="blogs") */
+    public function blogs(BlogPostRepository $blogPostRepository) {
+        $blogPosts = $blogPostRepository->getList($this->getUser() !== null);
+        return $this->render('index/blog.html.twig', ['blogPosts' => $blogPosts]);
+    }
+
     /** @Route("/blog/{slug}", name="blog") */
     public function blog(string $slug, BlogPostRepository $blogPostRepository) {
         $blogPost = $blogPostRepository->getBySlug($slug, $this->getUser() !== null);

@@ -1,10 +1,11 @@
 import {UpdatableProperty, ValidationRule} from "./UpdatableProperty";
 
-const isAnInteger = new ValidationRule<string>(input => !isNaN(input as any) && Number.isInteger(parseFloat(input)), 'Must be a whole number');
+const isANumber = new ValidationRule<string>(input => !isNaN(input as any), 'Must be a valid number');
+const isAnInteger = new ValidationRule<string>(input => Number.isInteger(parseFloat(input)), 'Must be a whole number');
 
 export class IntegerProperty extends UpdatableProperty<string, number, number> {
     public static fromApi(api: number) {
-        return new IntegerProperty(api, api.toString(), api, input => parseInt(input, 10), [isAnInteger]);
+        return new IntegerProperty(api, api.toString(), api, input => parseInt(input, 10), [isANumber, isAnInteger]);
     }
 
     public with(input?: string) {

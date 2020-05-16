@@ -59,13 +59,20 @@ const FeedbackCell = styled.td`
   padding: 4px;
 `;
 
+const InputWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+`;
+
 export const TextInput: React.FC<{ property: UpdatableProperty<any, any, any>, onChange: (value: string) => void }> = props => {
     return (
         <PropertyWrapper>
-            <label>Quantity <Input className={props.property.isValid() ? 'valid' : 'invalid'} type='text'
-                                   value={props.property.input} onChange={ev => props.onChange(ev.target.value)}/>
-            </label>
-            <div>{props.property.getValidityDescriptions().map((v, k) => <div key={k}>{v}</div>)}</div>
+            <InputWrapper>
+                <label>Quantity <Input className={props.property.isValid() ? 'valid' : 'invalid'} type='text'
+                                       value={props.property.input} onChange={ev => props.onChange(ev.target.value)}/>
+                </label>
+                <div>{props.property.getValidityDescriptions().map((v, k) => <div key={k}>{v}</div>)}</div>
+            </InputWrapper>
             <StateFeedback>
                 <StateFeedbackTitle>Internal state for property</StateFeedbackTitle>
                 <StateFeedbackSubtitle>

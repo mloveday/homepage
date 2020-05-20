@@ -23,7 +23,6 @@
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/doctrine/orm" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/doctrine/persistence" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/doctrine/reflection" />
-      <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/easycorp/easy-log-handler" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/friendsofsymfony/user-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/milesloveday.com/vendor/jdorn/sql-formatter" />

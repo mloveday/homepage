@@ -72,10 +72,11 @@ export const ReactFormExample: React.FC = props => {
       The only validation on these are a rather annoying length limit of 9 characters on the name as well as it not being empty, and the quantity must be an integer (and by extension a number). They allow any text to be entered in, where in reality we might prevent this with a mask. Try it out, type some stuff in and see what happens.
     </p>
     <p>Start the "API request" by clicking the load button. Approximately 1 in 5 requests will 'fail', showing an error message. The request can be retried by clicking the load button again.</p>
-    <p>Save is disabled unless the entity is loaded and at least one property has been changed and all properties are valid.</p>
+    <p>Save is disabled unless the entity is loaded and at least one property has been changed and all properties are valid. Reset is disabled unless the entity is loaded & at least one property is dirty.</p>
     <Buttons>
       <Button disabled={!['empty','loaded','error'].includes(fetchState)} onClick={() => setFetchState('requested')}>Load data</Button>
       <Button disabled={someEntity === undefined || fetchState !== 'loaded' || !someEntity.isValid() || !someEntity.isDirty()} onClick={() => {}}>Save</Button>
+      <Button disabled={someEntity === undefined || fetchState !== 'loaded' || !someEntity.isDirty()} onClick={() => someEntity && setSomeEntity(someEntity.reset())}>Reset</Button>
     </Buttons>
   </div>);
 

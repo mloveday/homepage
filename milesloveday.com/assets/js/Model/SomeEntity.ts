@@ -36,6 +36,12 @@ export class SomeEntity {
         );
     };
 
+    public reset = () => SomeEntity.fromApi({
+        id: this.id,
+        name: this.name.api,
+        quantity: this.quantity.api,
+    });
+
     public isValid = () => this.editableProperties.reduce((carry, prop) => carry && prop.isValid(), true);
     public isDirty = () => this.editableProperties.reduce((carry, prop) => carry || prop.isDirty, false);
 

@@ -50,4 +50,10 @@ class IndexController extends AbstractController {
     {
         return $this->render('index/react-form-example.html.twig');
     }
+
+    /** @Route("/react-adventure", name="react-adventure") */
+    public function reactAdventure()
+    {
+        return $this->render('index/react-adventure.html.twig');
+    }
 }

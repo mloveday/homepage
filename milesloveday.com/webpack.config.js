@@ -28,6 +28,7 @@ Encore
     .addEntry('app', './assets/js/app.js')
     .addEntry('form', './assets/js/form.js')
     .addEntry('react-form', './assets/js/react-form-index.tsx')
+    .addEntry('react-adventure', './assets/js/react-adventure-index.tsx')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
